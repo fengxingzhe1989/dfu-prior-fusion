@@ -1,0 +1,71 @@
+experiment_name: dfuc2022_seg_deeplabv3p_cv5_v1
+task_prefix: dfuc2022_seg
+seed: 20260421
+
+data:
+  image_dir: data_raw/2022_dfuc2022/train/DFUC2022_train_images
+  mask_dir: data_raw/2022_dfuc2022/train/DFUC2022_train_masks
+  split_manifest: data_processed/dfuc2022_seg_v1/splits/dfuc2022_seg_cv5_manifest.csv
+  input_width: 512
+  input_height: 384
+  num_folds: 5
+  current_fold: 0
+
+augmentation:
+  horizontal_flip_p: 0.5
+  vertical_flip_p: 0.1
+  rotation_deg: 15
+  brightness_contrast: 0.15
+  scale_min: 0.9
+  scale_max: 1.1
+
+model:
+  architecture: deeplabv3plus
+  backbone: resnet50
+  pretrained: true
+  in_channels: 3
+  num_classes: 1
+
+loss:
+  name: dice_bce
+  dice_weight: 0.5
+  bce_weight: 0.5
+
+optimizer:
+  name: adamw
+  lr: 0.0003
+  weight_decay: 0.0001
+
+scheduler:
+  name: cosine
+  warmup_epochs: 5
+  min_lr: 1.0e-6
+
+training:
+  epochs: 100
+  batch_size: 8
+  grad_accum_steps: 1
+  num_workers: 4
+  mixed_precision: true
+  early_stopping_patience: 15
+
+metrics:
+  primary: dice
+  secondary:
+    - iou
+    - precision
+    - recall
+
+outputs:
+  checkpoint_dir: outputs/checkpoints
+  log_dir: outputs/logs
+  figure_dir: outputs/figures
+
+naming:
+  best_checkpoint: dfuc2022_seg_deeplabv3p_fold{fold}_best.pt
+  last_checkpoint: dfuc2022_seg_deeplabv3p_fold{fold}_last.pt
+  train_log: dfuc2022_seg_deeplabv3p_fold{fold}.log
+
+success_criteria:
+  min_mean_dice: 0.70
+  target_mean_dice: 0.72

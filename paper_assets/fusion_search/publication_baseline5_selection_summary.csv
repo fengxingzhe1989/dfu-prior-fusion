@@ -1,0 +1,9 @@
+item,value,note
+search_file,publication_baseline5_full_oof_fusion_search.csv,Full OOF baseline5 fusion-search log; rows are sorted by Macro-F1 descending.
+total_candidate_rows,43678,Includes unadjusted and class-logit-bias-adjusted candidates.
+selected_prior_informed_candidate,0.400*strong_lpt_full_output_ensemble + 0.350*dfuc2021_cls_convnext_tiny_seed2027 + 0.250*dfuc2021_cls_efficientnetv2s_seed3407,Candidate reported in the manuscript.
+selected_candidate_macro_f1,0.963538860586384,Matches manuscript Table 5 selected prior-informed probability-fusion candidate.
+selected_candidate_overall_rank,13,"Rank among all baseline5 candidate rows, including seed-only RGB probability fusions."
+selected_candidate_rank_among_strong_lpt_full_output_candidates,1,Rank among candidates containing strong_lpt_full_output_ensemble.
+higher_unconstrained_candidate_rows,12,Higher rows are retained for transparency but were not the selected prior-informed candidate.
+top_unconstrained_candidate,0.250*dfuc2021_cls_efficientnetv2s_seed2027 + 0.350*convnext_tiny + 0.400*dfuc2021_cls_efficientnetv2s_seed3407,Macro-F1 0.964246; retained in full log for audit transparency.

@@ -1,0 +1,10 @@
+{
+  "dfuc2021_valid_train_images": 5955,
+  "dfuc2022_seg_train_images": 2000,
+  "phash_threshold": 4,
+  "dhash_threshold": 6,
+  "cross_dataset_exact_duplicate_pairs": 0,
+  "cross_dataset_near_duplicate_candidate_pairs": 732,
+  "dfuc2021_images_in_near_duplicate_pairs": 241,
+  "dfuc2022_images_in_near_duplicate_pairs": 180
+}

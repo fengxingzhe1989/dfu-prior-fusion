@@ -1,0 +1,6 @@
+fold,train_macro_f1,biased,bias,candidate
+0,0.9663851540872259,True,"[-0.25, -0.05, -0.5, 0.0]",0.400*dfuc2021_cls_convnext_tiny_seed2027 + 0.400*dfuc2021_cls_efficientnetv2s_seed2027 + 0.200*dfuc2021_cls_efficientnetv2s_seed3407
+1,0.9624012366266768,True,"[-0.25, -0.1, 0.0, -0.25]",0.400*dfuc2021_cls_efficientnetv2s_seed2027 + 0.200*dfuc2021_cls_convnext_tiny_seed202607 + 0.400*dfuc2021_cls_efficientnetv2s_seed3407
+2,0.9677189301625263,True,"[-0.375, -0.1, -0.25, -0.1]",0.300*dfuc2021_cls_efficientnetv2s_seed2027 + 0.400*dfuc2021_cls_efficientnetv2s_seed3407 + 0.300*efficientnetv2s
+3,0.9653880667975963,True,"[-0.35, -0.025, -0.25, 0.0]",0.400*strong_lpt_full_output_ensemble + 0.350*dfuc2021_cls_convnext_tiny_seed2027 + 0.250*dfuc2021_cls_efficientnetv2s_seed3407
+4,0.9685026474457076,True,"[0.475, 0.35000000000000003, 0.0, -0.25]",0.350*dfuc2021_cls_efficientnetv2s_seed2027 + 0.350*convnext_tiny + 0.300*dfuc2021_cls_efficientnetv2s_seed3407

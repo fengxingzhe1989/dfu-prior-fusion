@@ -1,0 +1,3 @@
+Endpoint,AUROC,AUPRC
+Infection detection,0.9878,0.9905
+Ischaemia detection,0.9987,0.9954

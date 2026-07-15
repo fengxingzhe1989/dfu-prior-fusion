@@ -1,0 +1,5 @@
+method,group,macro_f1,macro_f1_std,balanced_accuracy,balanced_accuracy_std,macro_precision,macro_precision_std,macro_recall,macro_recall_std,accuracy,accuracy_std
+Pure cls ensemble,fusion,0.951547,0.009437,0.947051,0.01683,0.957211,0.006658,0.947051,0.01683,0.943073,0.007901
+Cls + prior residual,fusion,0.952529,0.008941,0.949053,0.015698,0.956817,0.006447,0.949053,0.015698,0.943073,0.008386
+LPT output ensemble,fusion,0.95043,0.008269,0.950626,0.014271,0.951804,0.012023,0.950626,0.014271,0.943073,0.006952
+LPT ablations + prior stats,fusion,0.955189,0.010973,0.954398,0.015092,0.957018,0.01315,0.954398,0.015092,0.945592,0.00928

@@ -1,0 +1,48 @@
+{
+  "source_manifest": "data_processed/dfuc2021_cls_v1/splits/dfuc2021_cls_cv5_manifest.csv",
+  "audit_pairs": "outputs/paper_tables/similar_image_audit_pairs.csv",
+  "pair_scope": "all_near_duplicates",
+  "samples": 5955,
+  "num_folds": 5,
+  "seed": 20260501,
+  "near_duplicate_pairs_used": 343,
+  "similarity_groups": 5670,
+  "non_singleton_groups": 151,
+  "largest_group_size": 49,
+  "manifest": "data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_similarity_grouped_manifest.csv",
+  "fold_counts": {
+    "0": {
+      "both": 124,
+      "infection": 511,
+      "ischaemia": 45,
+      "none": 511
+    },
+    "1": {
+      "both": 124,
+      "infection": 511,
+      "ischaemia": 45,
+      "none": 511
+    },
+    "2": {
+      "both": 125,
+      "infection": 511,
+      "ischaemia": 45,
+      "none": 510
+    },
+    "3": {
+      "both": 124,
+      "infection": 511,
+      "ischaemia": 46,
+      "none": 510
+    },
+    "4": {
+      "both": 124,
+      "infection": 511,
+      "ischaemia": 46,
+      "none": 510
+    }
+  },
+  "exclusion_manifest": "data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_excluding_cross_fold_same_label_near_duplicates_manifest.csv",
+  "excluded_images": 330,
+  "exclusion_samples": 5625
+}

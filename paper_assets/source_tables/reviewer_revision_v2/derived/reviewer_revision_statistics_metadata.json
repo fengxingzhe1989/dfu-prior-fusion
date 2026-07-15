@@ -1,0 +1,11 @@
+{
+  "bootstrap_iterations": 5000,
+  "seed": 20260712,
+  "source_dir": "paper_assets/source_tables/reviewer_revision_v2",
+  "group_manifest": "paper_assets/source_tables/reviewer_revision_v2/dfuc2021_similarity_grouped_manifest.csv",
+  "notes": [
+    "All model comparisons resample reconstructed image-similarity groups.",
+    "Fallback overlap summaries separate empty and non-empty thresholded prior masks.",
+    "CAM mass enrichment is CAM-prior mass ratio divided by prior mask area and is undefined for empty masks."
+  ]
+}

@@ -1,0 +1,36 @@
+method,curve,class,roc_auc,average_precision
+EfficientNetV2-S,one_vs_rest,none,0.9863948876014802,0.9736708039548706
+EfficientNetV2-S,one_vs_rest,infection,0.9851196615632555,0.9827870596138474
+EfficientNetV2-S,one_vs_rest,ischaemia,0.9970428900155046,0.9833535828676333
+EfficientNetV2-S,one_vs_rest,both,0.9949668127232888,0.9883814848979539
+EfficientNetV2-S,macro,macro,0.9908810629758823,0.9820482328335762
+EfficientNetV2-S,micro,micro,0.9916990451992894,0.9783523565903517
+EfficientNetV2-S,weighted,weighted,0.9871475424328762,0.9794853055312833
+Reliability-aware LPT fusion,one_vs_rest,none,0.9865063511174448,0.9817835411787891
+Reliability-aware LPT fusion,one_vs_rest,infection,0.9869420973868999,0.9826408706339399
+Reliability-aware LPT fusion,one_vs_rest,ischaemia,0.9991440147171019,0.9840972879128392
+Reliability-aware LPT fusion,one_vs_rest,both,0.9993140953999108,0.996268278187871
+Reliability-aware LPT fusion,macro,macro,0.9929766396553393,0.9861974944783598
+Reliability-aware LPT fusion,micro,micro,0.9945057471102303,0.9832944017549771
+Reliability-aware LPT fusion,weighted,weighted,0.9885106652324728,0.9837500766866277
+Strong classification ensemble,one_vs_rest,none,0.9906058594804326,0.9863873246958289
+Strong classification ensemble,one_vs_rest,infection,0.989898123633015,0.9874367416373391
+Strong classification ensemble,one_vs_rest,ischaemia,0.9990355745330151,0.9877858637918085
+Strong classification ensemble,one_vs_rest,both,0.9996220279228382,0.9971491936729813
+Strong classification ensemble,macro,macro,0.9947903963923252,0.9896897809494893
+Strong classification ensemble,micro,micro,0.9960538632523099,0.9885702129924301
+Strong classification ensemble,weighted,weighted,0.9915637639018462,0.9880131600098772
+Strong LPT output ensemble,one_vs_rest,none,0.9901177460050461,0.986298398990656
+Strong LPT output ensemble,one_vs_rest,infection,0.990007137101416,0.9869616135552622
+Strong LPT output ensemble,one_vs_rest,ischaemia,0.9992985996603746,0.9903654859450662
+Strong LPT output ensemble,one_vs_rest,both,0.9996126691892983,0.997316006677623
+Strong LPT output ensemble,macro,macro,0.9947590379890338,0.9902353762921519
+Strong LPT output ensemble,micro,micro,0.9959933478136118,0.9881887511595789
+Strong LPT output ensemble,weighted,weighted,0.9914104068494466,0.9878869256614917
+Strong RA-LPT fusion,one_vs_rest,none,0.9894330744493379,0.9856361380074083
+Strong RA-LPT fusion,one_vs_rest,infection,0.9889980430528377,0.9851397406764819
+Strong RA-LPT fusion,one_vs_rest,ischaemia,0.9993616641645953,0.9893600204435847
+Strong RA-LPT fusion,one_vs_rest,both,0.9995661774162288,0.9969424666590903
+Strong RA-LPT fusion,macro,macro,0.9943397397707499,0.9892695914466413
+Strong RA-LPT fusion,micro,micro,0.9956914755996025,0.9874848386112316
+Strong RA-LPT fusion,weighted,weighted,0.9906815952872464,0.9867441575246526

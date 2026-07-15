@@ -1,0 +1,5 @@
+cohort,selected_method,comparator,observed_macro_f1_difference
+all_5955,Post hoc prior-informed full-OOF candidate,Matched strong RGB stack,0.01586621784679554
+all_5955,Post hoc prior-informed full-OOF candidate,Matched strong RGB + explicit prior features,0.013059527854383246
+exclude_241_broad_overlap,Post hoc prior-informed full-OOF candidate,Matched strong RGB stack,0.014137081444627442
+exclude_241_broad_overlap,Post hoc prior-informed full-OOF candidate,Matched strong RGB + explicit prior features,0.011246834829949592

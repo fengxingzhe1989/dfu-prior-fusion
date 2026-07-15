@@ -1,0 +1,15 @@
+{
+  "bootstrap_iterations": 5000,
+  "bootstrap_seed_start": 20260715,
+  "analysis_images": 5955,
+  "analysis_similarity_groups": 5670,
+  "mixed_label_components": 17,
+  "repeated_grouped_rgb_configuration_seeds": [
+    20260430,
+    777,
+    2027,
+    3407,
+    202607
+  ],
+  "checkpoint_selection_boundary": "Base CNN best epochs were selected on the same outer validation fold used for reported fold performance; results are model-development CV estimates."
+}

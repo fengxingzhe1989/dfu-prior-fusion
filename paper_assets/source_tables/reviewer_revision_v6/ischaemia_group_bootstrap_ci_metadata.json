@@ -1,0 +1,42 @@
+{
+  "analysis": "similarity-group bootstrap confidence intervals for ischaemia-only metrics",
+  "class": "ischaemia",
+  "images": 5955,
+  "positive_images": 227,
+  "similarity_groups": 5670,
+  "bootstrap_resamples": 5000,
+  "seed": 20260713,
+  "interval": "2.5th and 97.5th percentiles",
+  "resampling_unit": "reconstructed similarity group",
+  "paired_draws_across_models": true,
+  "inputs": {
+    "manifest": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/dfuc2021_similarity_grouped_manifest.csv",
+      "sha256": "aec52b1c6a8fc847928676409f7efef012a99c96cd15f5dfc9de2195cb402dff"
+    },
+    "ResNet50": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/resnet50_grouped_oof_predictions.csv",
+      "sha256": "becad594932825e3d71c5b7dd43762ab8f1f2cb8afd9c7d3acbd24b9c78c89b0"
+    },
+    "Full LPT": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/principal_full_lpt_grouped_oof_predictions.csv",
+      "sha256": "0822332f322f0dbb1781756b97e763062647b657f1e1f811981fc5444ec806d6"
+    },
+    "Moderate output-only LPT stack": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/lpt_ablation_output_grouped_oof_predictions.csv",
+      "sha256": "18a541a3be9411f417f65a9ac5bda7306f79259c9bd8878e6a4337b641867cfc"
+    },
+    "RA-LPT": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/ra_lpt_grouped_oof_predictions.csv",
+      "sha256": "9dee610844eb5ee85257166e6f73f2d87a1ebac86962f662019b588e75dee19c"
+    },
+    "Strong RGB stack": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/strong_cls_grouped_oof_predictions.csv",
+      "sha256": "fbb9eb23e0dba79c49bc9247c425807c31c7ff801b6c0224b90973d3cd472748"
+    },
+    "Strong RGB + explicit prior features": {
+      "path": "paper_assets/source_tables/reviewer_revision_v2/strong_cls_prior_grouped_oof_predictions.csv",
+      "sha256": "f2b69b9f896bb745eb5d23677d4ba84cfce91291ca62fa55ffd9034cf9a07b52"
+    }
+  }
+}

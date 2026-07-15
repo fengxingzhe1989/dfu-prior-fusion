@@ -1,0 +1,97 @@
+method,true_class,predicted_class,count
+ResNet50,none,none,2349
+ResNet50,none,infection,193
+ResNet50,none,ischaemia,2
+ResNet50,none,both,8
+ResNet50,infection,none,262
+ResNet50,infection,infection,2281
+ResNet50,infection,ischaemia,3
+ResNet50,infection,both,9
+ResNet50,ischaemia,none,12
+ResNet50,ischaemia,infection,1
+ResNet50,ischaemia,ischaemia,193
+ResNet50,ischaemia,both,21
+ResNet50,both,none,4
+ResNet50,both,infection,28
+ResNet50,both,ischaemia,6
+ResNet50,both,both,583
+Full LPT,none,none,2387
+Full LPT,none,infection,158
+Full LPT,none,ischaemia,5
+Full LPT,none,both,2
+Full LPT,infection,none,243
+Full LPT,infection,infection,2302
+Full LPT,infection,ischaemia,0
+Full LPT,infection,both,10
+Full LPT,ischaemia,none,10
+Full LPT,ischaemia,infection,3
+Full LPT,ischaemia,ischaemia,199
+Full LPT,ischaemia,both,15
+Full LPT,both,none,4
+Full LPT,both,infection,21
+Full LPT,both,ischaemia,6
+Full LPT,both,both,590
+Moderate output-only LPT stack,none,none,2409
+Moderate output-only LPT stack,none,infection,139
+Moderate output-only LPT stack,none,ischaemia,3
+Moderate output-only LPT stack,none,both,1
+Moderate output-only LPT stack,infection,none,181
+Moderate output-only LPT stack,infection,infection,2364
+Moderate output-only LPT stack,infection,ischaemia,4
+Moderate output-only LPT stack,infection,both,6
+Moderate output-only LPT stack,ischaemia,none,4
+Moderate output-only LPT stack,ischaemia,infection,0
+Moderate output-only LPT stack,ischaemia,ischaemia,205
+Moderate output-only LPT stack,ischaemia,both,18
+Moderate output-only LPT stack,both,none,3
+Moderate output-only LPT stack,both,infection,22
+Moderate output-only LPT stack,both,ischaemia,12
+Moderate output-only LPT stack,both,both,584
+RA-LPT,none,none,2397
+RA-LPT,none,infection,150
+RA-LPT,none,ischaemia,4
+RA-LPT,none,both,1
+RA-LPT,infection,none,164
+RA-LPT,infection,infection,2375
+RA-LPT,infection,ischaemia,4
+RA-LPT,infection,both,12
+RA-LPT,ischaemia,none,4
+RA-LPT,ischaemia,infection,1
+RA-LPT,ischaemia,ischaemia,203
+RA-LPT,ischaemia,both,19
+RA-LPT,both,none,3
+RA-LPT,both,infection,23
+RA-LPT,both,ischaemia,13
+RA-LPT,both,both,582
+Strong RGB stack,none,none,2444
+Strong RGB stack,none,infection,102
+Strong RGB stack,none,ischaemia,5
+Strong RGB stack,none,both,1
+Strong RGB stack,infection,none,159
+Strong RGB stack,infection,infection,2380
+Strong RGB stack,infection,ischaemia,6
+Strong RGB stack,infection,both,10
+Strong RGB stack,ischaemia,none,7
+Strong RGB stack,ischaemia,infection,1
+Strong RGB stack,ischaemia,ischaemia,215
+Strong RGB stack,ischaemia,both,4
+Strong RGB stack,both,none,0
+Strong RGB stack,both,infection,18
+Strong RGB stack,both,ischaemia,7
+Strong RGB stack,both,both,596
+Strong RGB + explicit prior features,none,none,2432
+Strong RGB + explicit prior features,none,infection,115
+Strong RGB + explicit prior features,none,ischaemia,4
+Strong RGB + explicit prior features,none,both,1
+Strong RGB + explicit prior features,infection,none,155
+Strong RGB + explicit prior features,infection,infection,2387
+Strong RGB + explicit prior features,infection,ischaemia,6
+Strong RGB + explicit prior features,infection,both,7
+Strong RGB + explicit prior features,ischaemia,none,4
+Strong RGB + explicit prior features,ischaemia,infection,1
+Strong RGB + explicit prior features,ischaemia,ischaemia,218
+Strong RGB + explicit prior features,ischaemia,both,4
+Strong RGB + explicit prior features,both,none,0
+Strong RGB + explicit prior features,both,infection,16
+Strong RGB + explicit prior features,both,ischaemia,7
+Strong RGB + explicit prior features,both,both,598

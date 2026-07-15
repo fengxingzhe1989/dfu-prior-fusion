@@ -1,0 +1,9 @@
+check,finding,paper_use
+DFUC2022 segmentation prior viability,"DeepLabV3+ 5-fold Dice 0.7895, IoU 0.6901.","Shows the prior generator is functional, not a failed segmenter."
+DFUC2021 prior reliability,5955 priors generated; fallback ratio 0.2652.,Justifies explicit reliability modeling instead of treating all priors as trustworthy.
+Exact and near-duplicate audit,0 SHA256 exact duplicate groups; 221 cross-fold same-label near-duplicate candidate pairs involving 330 images.,Supports transparent internal-validation reporting; does not claim patient-level independence.
+Near-duplicate exclusion sensitivity,Strong cls ensemble Macro-F1 0.9587 -> 0.9546; RA-LPT fusion 0.9551 -> 0.9511.,The ranking and core conclusion survive a conservative exclusion analysis.
+Similarity-grouped ResNet50 retraining,Grouped Macro-F1 0.9156 +/- 0.0046 vs standard 0.9442 +/- 0.0082.,"Shows standard CV is likely optimistic, but classification signal remains above 0.91 Macro-F1."
+CAM-prior agreement by prior status,Pointing-game accuracy non-fallback vs fallback: ResNet50 0.7466 vs 0.0171; EfficientNetV2-S 0.7436 vs 0.0108.,Reliable priors align with model attention; fallback priors should not be trusted.
+Occlusion control,Non-fallback prior occlusion drop vs random/background: ResNet50 0.3817 vs 0.2852/0.2315; EfficientNetV2-S 0.4260 vs 0.3260/0.3576.,Provides explanatory evidence that reliable prior regions contain discriminative signal.
+Difficult-case prior quality,All-method wrong cases have fallback ratio 0.3485 and prior quality 0.6436; all-method correct cases have 0.2552 and 0.7378.,Prior reliability works as an interpretable difficulty marker.

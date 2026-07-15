@@ -1,0 +1,5 @@
+rule,candidate_pairs,similarity_groups,non_singleton_groups,images_in_non_singleton_groups,largest_group_size,mixed_label_groups,images_in_mixed_label_groups
+pHash <= 4 OR dHash <= 6 (analysis grouping),343,5670,151,436,49,17,128
+pHash <= 2 OR dHash <= 4,99,5861,64,158,10,4,20
+pHash <= 4 AND dHash <= 6,25,5931,21,45,3,1,2
+pHash <= 2 AND dHash <= 4,7,5948,7,14,2,0,0

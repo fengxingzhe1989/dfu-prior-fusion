@@ -1,0 +1,64 @@
+experiment_name: dfuc2021_cls_resnet50_similarity_grouped_cv5_v1
+task_prefix: dfuc2021_cls
+seed: 20260501
+
+data:
+  train_csv: data_raw/2021_dfuc2021/train/train.csv
+  image_dir: data_raw/2021_dfuc2021/train/images
+  split_manifest: data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_similarity_grouped_manifest.csv
+  input_size: 224
+  num_folds: 5
+  current_fold: 0
+
+augmentation:
+  horizontal_flip_p: 0.5
+  rotation_deg: 10
+  brightness_contrast: 0.12
+  scale_min: 0.95
+  scale_max: 1.05
+
+model:
+  name: resnet50
+  pretrained: true
+  num_classes: 4
+
+loss:
+  name: cross_entropy
+  class_weights: none
+
+optimizer:
+  name: adamw
+  lr: 0.0003
+  weight_decay: 0.0001
+
+scheduler:
+  name: cosine
+  warmup_epochs: 3
+  min_lr: 1.0e-6
+
+training:
+  epochs: 60
+  batch_size: 64
+  grad_accum_steps: 1
+  num_workers: 4
+  mixed_precision: true
+  early_stopping_patience: 12
+
+metrics:
+  primary: macro_f1
+  secondary:
+    - balanced_accuracy
+    - macro_precision
+    - macro_recall
+    - accuracy
+
+outputs:
+  checkpoint_dir: outputs/checkpoints
+  log_dir: outputs/logs
+  prediction_dir: outputs/predictions
+
+naming:
+  best_checkpoint: dfuc2021_cls_resnet50_similarity_grouped_fold{fold}_best.pt
+  last_checkpoint: dfuc2021_cls_resnet50_similarity_grouped_fold{fold}_last.pt
+  history_log: dfuc2021_cls_resnet50_similarity_grouped_fold{fold}_history.jsonl
+  predictions: dfuc2021_cls_resnet50_similarity_grouped_fold{fold}_val_predictions.csv

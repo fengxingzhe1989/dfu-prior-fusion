@@ -1,0 +1,54 @@
+{
+  "source_train_csv": "data_raw/2021_dfuc2021/train/train.csv",
+  "image_dir": "data_raw/2021_dfuc2021/train/images",
+  "num_rows_in_csv": 9949,
+  "labeled_samples": 5955,
+  "unlabeled_or_invalid_rows": 3994,
+  "num_folds": 5,
+  "seed": 20260430,
+  "label_to_index": {
+    "none": 0,
+    "infection": 1,
+    "ischaemia": 2,
+    "both": 3
+  },
+  "class_counts": {
+    "none": 2552,
+    "infection": 2555,
+    "ischaemia": 227,
+    "both": 621
+  },
+  "fold_counts": {
+    "0": {
+      "none": 511,
+      "infection": 511,
+      "ischaemia": 45,
+      "both": 124
+    },
+    "1": {
+      "none": 511,
+      "infection": 511,
+      "ischaemia": 45,
+      "both": 124
+    },
+    "2": {
+      "none": 510,
+      "infection": 511,
+      "ischaemia": 45,
+      "both": 125
+    },
+    "3": {
+      "none": 510,
+      "infection": 511,
+      "ischaemia": 46,
+      "both": 124
+    },
+    "4": {
+      "none": 510,
+      "infection": 511,
+      "ischaemia": 46,
+      "both": 124
+    }
+  },
+  "manifest": "data_processed/dfuc2021_cls_v1/splits/dfuc2021_cls_cv5_manifest.csv"
+}

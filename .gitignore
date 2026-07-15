@@ -1,0 +1,63 @@
+# OS/editor noise
+.DS_Store
+._*
+*.swp
+*.swo
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local secrets and machine-specific config
+.env
+.env.*
+*.key
+*.pem
+*.pub
+
+# Data and generated artifacts are not part of the code-only release.
+data_raw/*
+!data_raw/README.md
+data_processed/*
+!data_processed/README.md
+outputs/*
+!outputs/README.md
+
+# Model and result artifacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.csv
+*.json
+*.xlsx
+*.xls
+*.docx
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+*.pptx
+*.ndjson
+*.log
+*.tfevents*
+wandb/
+runs/
+
+# Small non-image audited paper assets are intentionally versionable.
+!paper_assets/
+!paper_assets/**
+
+# Local office/app lock files
+~$*

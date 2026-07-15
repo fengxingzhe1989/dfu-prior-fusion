@@ -1,0 +1,76 @@
+experiment_name: cross_task_lpt_no_roi_similarity_grouped_mac_cv5_v1
+task_prefix: cross_task_prior_transfer
+seed: 20260430
+data:
+  train_csv: data_raw/2021_dfuc2021/train/train.csv
+  image_dir: data_raw/2021_dfuc2021/train/images
+  split_manifest: data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_similarity_grouped_manifest.csv
+  prior_meta_csv: data_processed/cross_task_lesion_prior_v1/dfuc2021_train_prior_meta.csv
+  input_size: 224
+  num_folds: 5
+  current_fold: 0
+  stats_fields:
+  - prior_mean
+  - prior_max
+  - prior_area_ratio
+  - prior_confidence
+prior:
+  roi_threshold: 0.3
+  fallback_max_threshold: 0.15
+  fallback_area_threshold: 0.01
+  bbox_expand_ratio: 0.12
+  roi_mode: prior_crop
+  stats_mode: learned
+  shuffle_prior: false
+augmentation:
+  horizontal_flip_p: 0.5
+  rotation_deg: 10
+  brightness_contrast: 0.12
+  scale_min: 0.95
+  scale_max: 1.05
+model:
+  global_backbone: resnet50
+  lesion_backbone: mobilenet_v3_small
+  use_lesion_branch: false
+  pretrained: true
+  num_classes: 4
+  prior_alpha: 1.0
+  dropout: 0.25
+loss:
+  class_weights: none
+  class_weight: 1.0
+  attribute_weight: 0.4
+  alignment_weight: 0.05
+optimizer:
+  name: adamw
+  lr: 0.0002
+  weight_decay: 0.0001
+scheduler:
+  name: cosine
+  warmup_epochs: 3
+  min_lr: 1.0e-06
+training:
+  epochs: 60
+  batch_size: 32
+  grad_accum_steps: 1
+  num_workers: 0
+  mixed_precision: false
+  early_stopping_patience: 12
+metrics:
+  primary: macro_f1
+  secondary:
+  - balanced_accuracy
+  - macro_precision
+  - macro_recall
+  - accuracy
+  - infection_attr_f1
+  - ischaemia_attr_f1
+outputs:
+  checkpoint_dir: outputs/grouped_retraining/checkpoints
+  log_dir: outputs/grouped_retraining/logs
+  prediction_dir: outputs/grouped_retraining/predictions
+naming:
+  best_checkpoint: cross_task_lpt_no_roi_fold{fold}_best.pt
+  last_checkpoint: cross_task_lpt_no_roi_fold{fold}_last.pt
+  history_log: cross_task_lpt_no_roi_fold{fold}_history.jsonl
+  predictions: cross_task_lpt_no_roi_fold{fold}_val_predictions.csv

@@ -1,0 +1,61 @@
+{
+  "analysis": "clinical metrics derived from fixed similarity-grouped OOF predictions",
+  "images": 5955,
+  "similarity_groups": 5670,
+  "bootstrap_resamples": 5000,
+  "bootstrap_seed": 20260713,
+  "bootstrap_unit": "reconstructed image-similarity group",
+  "interval": "2.5th and 97.5th percentiles",
+  "paired_draws_across_models": true,
+  "threshold_selection": "none; saved four-class OOF decisions were retained",
+  "binary_score_definitions": {
+    "infection detection": "prob_infection + prob_both",
+    "ischaemia detection": "prob_ischaemia + prob_both"
+  },
+  "manifest": {
+    "source_file": "dfuc2021_similarity_grouped_manifest.csv",
+    "sha256": "aec52b1c6a8fc847928676409f7efef012a99c96cd15f5dfc9de2195cb402dff"
+  },
+  "prediction_inputs": [
+    {
+      "method": "ResNet50",
+      "source_file": "resnet50_grouped_oof_predictions.csv",
+      "source_id": "resnet50",
+      "sha256": "becad594932825e3d71c5b7dd43762ab8f1f2cb8afd9c7d3acbd24b9c78c89b0"
+    },
+    {
+      "method": "Full LPT",
+      "source_file": "principal_full_lpt_grouped_oof_predictions.csv",
+      "source_id": "full_lpt",
+      "sha256": "0822332f322f0dbb1781756b97e763062647b657f1e1f811981fc5444ec806d6"
+    },
+    {
+      "method": "Moderate output-only LPT stack",
+      "source_file": "lpt_ablation_output_grouped_oof_predictions.csv",
+      "source_id": "moderate_output_only_lpt_stack",
+      "sha256": "18a541a3be9411f417f65a9ac5bda7306f79259c9bd8878e6a4337b641867cfc"
+    },
+    {
+      "method": "RA-LPT",
+      "source_file": "ra_lpt_grouped_oof_predictions.csv",
+      "source_id": "ra_lpt",
+      "sha256": "9dee610844eb5ee85257166e6f73f2d87a1ebac86962f662019b588e75dee19c"
+    },
+    {
+      "method": "Strong RGB stack",
+      "source_file": "strong_cls_grouped_oof_predictions.csv",
+      "source_id": "strong_rgb_stack",
+      "sha256": "fbb9eb23e0dba79c49bc9247c425807c31c7ff801b6c0224b90973d3cd472748"
+    },
+    {
+      "method": "Strong RGB + explicit prior features",
+      "source_file": "strong_cls_prior_grouped_oof_predictions.csv",
+      "source_id": "strong_rgb_explicit_prior_features",
+      "sha256": "f2b69b9f896bb745eb5d23677d4ba84cfce91291ca62fa55ffd9034cf9a07b52"
+    }
+  ],
+  "outputs": [
+    "main_reported_grouped_per_class_metrics_with_ci.csv",
+    "main_reported_grouped_binary_endpoint_metrics_with_ci.csv"
+  ]
+}

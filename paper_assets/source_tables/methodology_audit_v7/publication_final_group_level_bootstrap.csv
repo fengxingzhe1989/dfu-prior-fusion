@@ -1,0 +1,6 @@
+baseline,candidate,metric,observed_delta,ci95_low,ci95_high,two_sided_p,bootstrap_iters,bootstrap_unit,groups_resampled
+ResNet50 grouped,Selected prior-informed probability-fusion candidate,macro_f1,0.04980140519692844,0.03904135807571691,0.06091523826524501,0.0003999200159968006,5000,similarity_group,5670
+ConvNeXt-Tiny grouped,Selected prior-informed probability-fusion candidate,macro_f1,0.018484297022973717,0.009955209409526673,0.027788572473747247,0.0003999200159968006,5000,similarity_group,5670
+EfficientNetV2-S grouped,Selected prior-informed probability-fusion candidate,macro_f1,0.022519741278887784,0.01373811618973192,0.032454208065699285,0.0003999200159968006,5000,similarity_group,5670
+Strong cls ensemble grouped,Selected prior-informed probability-fusion candidate,macro_f1,0.00785955629140389,0.0008827576814320976,0.015941040902698198,0.019596080783843232,5000,similarity_group,5670
+Strong cls + prior residual grouped,Selected prior-informed probability-fusion candidate,macro_f1,0.008449264655785438,0.0016842671463275615,0.01613954197787274,0.013197360527894421,5000,similarity_group,5670

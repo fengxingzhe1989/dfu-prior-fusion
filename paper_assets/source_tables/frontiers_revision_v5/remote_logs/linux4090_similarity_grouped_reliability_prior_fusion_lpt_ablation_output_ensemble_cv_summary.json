@@ -1,0 +1,563 @@
+{
+  "experiment_name": "linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble",
+  "feature_set": {
+    "name": "lpt_ablation_output_ensemble",
+    "model_names": [
+      "resnet50",
+      "efficientnetb0",
+      "lpt_no_alignment",
+      "lpt_no_prior_mod",
+      "lpt_no_roi",
+      "lpt_stats_only"
+    ],
+    "use_prior_stats": false,
+    "use_interactions": false,
+    "description": "Ensemble of non-random LPT ablation outputs without explicit prior reliability statistics.",
+    "default": true
+  },
+  "feature_columns": [
+    "resnet50_confidence",
+    "resnet50_margin",
+    "resnet50_entropy",
+    "resnet50_uncertainty",
+    "resnet50_prob_none",
+    "resnet50_logprob_none",
+    "resnet50_prob_infection",
+    "resnet50_logprob_infection",
+    "resnet50_prob_ischaemia",
+    "resnet50_logprob_ischaemia",
+    "resnet50_prob_both",
+    "resnet50_logprob_both",
+    "efficientnetb0_confidence",
+    "efficientnetb0_margin",
+    "efficientnetb0_entropy",
+    "efficientnetb0_uncertainty",
+    "efficientnetb0_prob_none",
+    "efficientnetb0_logprob_none",
+    "efficientnetb0_prob_infection",
+    "efficientnetb0_logprob_infection",
+    "efficientnetb0_prob_ischaemia",
+    "efficientnetb0_logprob_ischaemia",
+    "efficientnetb0_prob_both",
+    "efficientnetb0_logprob_both",
+    "lpt_no_alignment_confidence",
+    "lpt_no_alignment_margin",
+    "lpt_no_alignment_entropy",
+    "lpt_no_alignment_uncertainty",
+    "lpt_no_alignment_prob_none",
+    "lpt_no_alignment_logprob_none",
+    "lpt_no_alignment_prob_infection",
+    "lpt_no_alignment_logprob_infection",
+    "lpt_no_alignment_prob_ischaemia",
+    "lpt_no_alignment_logprob_ischaemia",
+    "lpt_no_alignment_prob_both",
+    "lpt_no_alignment_logprob_both",
+    "lpt_no_alignment_prob_infection_attr",
+    "lpt_no_alignment_prob_ischaemia_attr",
+    "lpt_no_prior_mod_confidence",
+    "lpt_no_prior_mod_margin",
+    "lpt_no_prior_mod_entropy",
+    "lpt_no_prior_mod_uncertainty",
+    "lpt_no_prior_mod_prob_none",
+    "lpt_no_prior_mod_logprob_none",
+    "lpt_no_prior_mod_prob_infection",
+    "lpt_no_prior_mod_logprob_infection",
+    "lpt_no_prior_mod_prob_ischaemia",
+    "lpt_no_prior_mod_logprob_ischaemia",
+    "lpt_no_prior_mod_prob_both",
+    "lpt_no_prior_mod_logprob_both",
+    "lpt_no_prior_mod_prob_infection_attr",
+    "lpt_no_prior_mod_prob_ischaemia_attr",
+    "lpt_no_roi_confidence",
+    "lpt_no_roi_margin",
+    "lpt_no_roi_entropy",
+    "lpt_no_roi_uncertainty",
+    "lpt_no_roi_prob_none",
+    "lpt_no_roi_logprob_none",
+    "lpt_no_roi_prob_infection",
+    "lpt_no_roi_logprob_infection",
+    "lpt_no_roi_prob_ischaemia",
+    "lpt_no_roi_logprob_ischaemia",
+    "lpt_no_roi_prob_both",
+    "lpt_no_roi_logprob_both",
+    "lpt_no_roi_prob_infection_attr",
+    "lpt_no_roi_prob_ischaemia_attr",
+    "lpt_stats_only_confidence",
+    "lpt_stats_only_margin",
+    "lpt_stats_only_entropy",
+    "lpt_stats_only_uncertainty",
+    "lpt_stats_only_prob_none",
+    "lpt_stats_only_logprob_none",
+    "lpt_stats_only_prob_infection",
+    "lpt_stats_only_logprob_infection",
+    "lpt_stats_only_prob_ischaemia",
+    "lpt_stats_only_logprob_ischaemia",
+    "lpt_stats_only_prob_both",
+    "lpt_stats_only_logprob_both",
+    "lpt_stats_only_prob_infection_attr",
+    "lpt_stats_only_prob_ischaemia_attr",
+    "cls_models_agree",
+    "cls_models_disagree",
+    "cls_confidence_mean",
+    "cls_entropy_mean",
+    "cls_prob_l1_disagreement"
+  ],
+  "fold_results": [
+    {
+      "fold": 0,
+      "train_samples": 4764,
+      "val_samples": 1191,
+      "inner_macro_f1": 0.9401684861227789,
+      "bias_train_macro_f1": 0.9456099623976782,
+      "selected_C": 0.03,
+      "selected_class_weight": null,
+      "biases": {
+        "none": -0.5,
+        "infection": -0.5,
+        "ischaemia": 1.0,
+        "both": -1.5
+      },
+      "metrics": {
+        "macro_f1": 0.9152685173284643,
+        "balanced_accuracy": 0.9243411961927208,
+        "macro_precision": 0.9117664904901819,
+        "macro_recall": 0.9243411961927208,
+        "accuracy": 0.929471032745592,
+        "per_class": {
+          "none": {
+            "precision": 0.9285714285714286,
+            "recall": 0.9412915851272016,
+            "f1": 0.93488824101069,
+            "support": 511
+          },
+          "infection": {
+            "precision": 0.9313725490196079,
+            "recall": 0.9295499021526419,
+            "f1": 0.930460333006856,
+            "support": 511
+          },
+          "ischaemia": {
+            "precision": 0.7962962962962963,
+            "recall": 0.9555555555555556,
+            "f1": 0.8686868686868687,
+            "support": 45
+          },
+          "both": {
+            "precision": 0.9908256880733946,
+            "recall": 0.8709677419354839,
+            "f1": 0.927038626609442,
+            "support": 124
+          }
+        },
+        "confusion_matrix": [
+          [
+            481,
+            28,
+            2,
+            0
+          ],
+          [
+            35,
+            475,
+            1,
+            0
+          ],
+          [
+            1,
+            0,
+            43,
+            1
+          ],
+          [
+            1,
+            7,
+            8,
+            108
+          ]
+        ]
+      },
+      "prediction_path": "/home/cw/DFU/outputs/linux4090_final_grouped/predictions/linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble_fold0_val_predictions.csv"
+    },
+    {
+      "fold": 1,
+      "train_samples": 4764,
+      "val_samples": 1191,
+      "inner_macro_f1": 0.9338773331910564,
+      "bias_train_macro_f1": 0.9376093052600141,
+      "selected_C": 0.03,
+      "selected_class_weight": null,
+      "biases": {
+        "none": -0.6,
+        "infection": 0.0,
+        "ischaemia": -0.65,
+        "both": -0.25
+      },
+      "metrics": {
+        "macro_f1": 0.9413866481216338,
+        "balanced_accuracy": 0.9287587063106285,
+        "macro_precision": 0.9569861668538462,
+        "macro_recall": 0.9287587063106285,
+        "accuracy": 0.9403862300587741,
+        "per_class": {
+          "none": {
+            "precision": 0.9610655737704918,
+            "recall": 0.9178082191780822,
+            "f1": 0.938938938938939,
+            "support": 511
+          },
+          "infection": {
+            "precision": 0.9144981412639405,
+            "recall": 0.9628180039138943,
+            "f1": 0.9380362249761678,
+            "support": 511
+          },
+          "ischaemia": {
+            "precision": 1.0,
+            "recall": 0.8666666666666667,
+            "f1": 0.9285714285714286,
+            "support": 45
+          },
+          "both": {
+            "precision": 0.9523809523809523,
+            "recall": 0.967741935483871,
+            "f1": 0.96,
+            "support": 124
+          }
+        },
+        "confusion_matrix": [
+          [
+            469,
+            42,
+            0,
+            0
+          ],
+          [
+            19,
+            492,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            39,
+            6
+          ],
+          [
+            0,
+            4,
+            0,
+            120
+          ]
+        ]
+      },
+      "prediction_path": "/home/cw/DFU/outputs/linux4090_final_grouped/predictions/linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble_fold1_val_predictions.csv"
+    },
+    {
+      "fold": 2,
+      "train_samples": 4764,
+      "val_samples": 1191,
+      "inner_macro_f1": 0.9377245513551632,
+      "bias_train_macro_f1": 0.9383916159653519,
+      "selected_C": 0.3,
+      "selected_class_weight": null,
+      "biases": {
+        "none": 0.4,
+        "infection": 0.25,
+        "ischaemia": 0.0,
+        "both": 0.0
+      },
+      "metrics": {
+        "macro_f1": 0.9357421633605415,
+        "balanced_accuracy": 0.9217377179182176,
+        "macro_precision": 0.953385863350486,
+        "macro_recall": 0.9217377179182176,
+        "accuracy": 0.9395465994962217,
+        "per_class": {
+          "none": {
+            "precision": 0.9245283018867925,
+            "recall": 0.9607843137254902,
+            "f1": 0.9423076923076923,
+            "support": 510
+          },
+          "infection": {
+            "precision": 0.9515151515151515,
+            "recall": 0.9217221135029354,
+            "f1": 0.9363817097415507,
+            "support": 511
+          },
+          "ischaemia": {
+            "precision": 1.0,
+            "recall": 0.8444444444444444,
+            "f1": 0.9156626506024096,
+            "support": 45
+          },
+          "both": {
+            "precision": 0.9375,
+            "recall": 0.96,
+            "f1": 0.9486166007905138,
+            "support": 125
+          }
+        },
+        "confusion_matrix": [
+          [
+            490,
+            20,
+            0,
+            0
+          ],
+          [
+            37,
+            471,
+            0,
+            3
+          ],
+          [
+            2,
+            0,
+            38,
+            5
+          ],
+          [
+            1,
+            4,
+            0,
+            120
+          ]
+        ]
+      },
+      "prediction_path": "/home/cw/DFU/outputs/linux4090_final_grouped/predictions/linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble_fold2_val_predictions.csv"
+    },
+    {
+      "fold": 3,
+      "train_samples": 4764,
+      "val_samples": 1191,
+      "inner_macro_f1": 0.94349106034252,
+      "bias_train_macro_f1": 0.9460658530935169,
+      "selected_C": 0.03,
+      "selected_class_weight": null,
+      "biases": {
+        "none": 0.45,
+        "infection": -0.1,
+        "ischaemia": -0.1,
+        "both": -0.5
+      },
+      "metrics": {
+        "macro_f1": 0.9314997815977157,
+        "balanced_accuracy": 0.9427688587779249,
+        "macro_precision": 0.9221840276794396,
+        "macro_recall": 0.9427688587779249,
+        "accuracy": 0.9345088161209067,
+        "per_class": {
+          "none": {
+            "precision": 0.9160447761194029,
+            "recall": 0.9627450980392157,
+            "f1": 0.9388145315487572,
+            "support": 510
+          },
+          "infection": {
+            "precision": 0.9583333333333334,
+            "recall": 0.9001956947162426,
+            "f1": 0.9283551967709385,
+            "support": 511
+          },
+          "ischaemia": {
+            "precision": 0.8627450980392157,
+            "recall": 0.9565217391304348,
+            "f1": 0.9072164948453608,
+            "support": 46
+          },
+          "both": {
+            "precision": 0.9516129032258065,
+            "recall": 0.9516129032258065,
+            "f1": 0.9516129032258065,
+            "support": 124
+          }
+        },
+        "confusion_matrix": [
+          [
+            491,
+            17,
+            1,
+            1
+          ],
+          [
+            45,
+            460,
+            3,
+            3
+          ],
+          [
+            0,
+            0,
+            44,
+            2
+          ],
+          [
+            0,
+            3,
+            3,
+            118
+          ]
+        ]
+      },
+      "prediction_path": "/home/cw/DFU/outputs/linux4090_final_grouped/predictions/linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble_fold3_val_predictions.csv"
+    },
+    {
+      "fold": 4,
+      "train_samples": 4764,
+      "val_samples": 1191,
+      "inner_macro_f1": 0.9342897074707828,
+      "bias_train_macro_f1": 0.936580742117866,
+      "selected_C": 0.03,
+      "selected_class_weight": null,
+      "biases": {
+        "none": 0.55,
+        "infection": 0.5,
+        "ischaemia": 0.0,
+        "both": 0.25
+      },
+      "metrics": {
+        "macro_f1": 0.9337196898929764,
+        "balanced_accuracy": 0.92302738267587,
+        "macro_precision": 0.9455416585026016,
+        "macro_recall": 0.92302738267587,
+        "accuracy": 0.926112510495382,
+        "per_class": {
+          "none": {
+            "precision": 0.9104761904761904,
+            "recall": 0.9372549019607843,
+            "f1": 0.923671497584541,
+            "support": 510
+          },
+          "infection": {
+            "precision": 0.9282868525896414,
+            "recall": 0.9119373776908023,
+            "f1": 0.9200394866732478,
+            "support": 511
+          },
+          "ischaemia": {
+            "precision": 0.9761904761904762,
+            "recall": 0.8913043478260869,
+            "f1": 0.9318181818181818,
+            "support": 46
+          },
+          "both": {
+            "precision": 0.9672131147540983,
+            "recall": 0.9516129032258065,
+            "f1": 0.959349593495935,
+            "support": 124
+          }
+        },
+        "confusion_matrix": [
+          [
+            478,
+            32,
+            0,
+            0
+          ],
+          [
+            45,
+            466,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            41,
+            4
+          ],
+          [
+            1,
+            4,
+            1,
+            118
+          ]
+        ]
+      },
+      "prediction_path": "/home/cw/DFU/outputs/linux4090_final_grouped/predictions/linux4090_similarity_grouped_reliability_prior_fusion_lpt_ablation_output_ensemble_fold4_val_predictions.csv"
+    }
+  ],
+  "fold_aggregate": {
+    "macro_f1": {
+      "mean": 0.9315233600602664,
+      "std": 0.008765010959280003
+    },
+    "balanced_accuracy": {
+      "mean": 0.9281267723750724,
+      "std": 0.007693431145033819
+    },
+    "macro_precision": {
+      "mean": 0.937972841375311,
+      "std": 0.01784608780379473
+    },
+    "macro_recall": {
+      "mean": 0.9281267723750724,
+      "std": 0.007693431145033819
+    },
+    "accuracy": {
+      "mean": 0.9340050377833752,
+      "std": 0.0055593435288822214
+    }
+  },
+  "oof_metrics": {
+    "macro_f1": 0.9312771848473487,
+    "balanced_accuracy": 0.9281781289065814,
+    "macro_precision": 0.93449351785797,
+    "macro_recall": 0.9281781289065814,
+    "accuracy": 0.9340050377833753,
+    "per_class": {
+      "none": {
+        "precision": 0.9276087793608009,
+        "recall": 0.9439655172413793,
+        "f1": 0.9357156729462032,
+        "support": 2552
+      },
+      "infection": {
+        "precision": 0.9362376237623763,
+        "recall": 0.9252446183953034,
+        "f1": 0.9307086614173228,
+        "support": 2555
+      },
+      "ischaemia": {
+        "precision": 0.9151785714285714,
+        "recall": 0.9030837004405287,
+        "f1": 0.9090909090909091,
+        "support": 227
+      },
+      "both": {
+        "precision": 0.9589490968801314,
+        "recall": 0.9404186795491143,
+        "f1": 0.9495934959349593,
+        "support": 621
+      }
+    },
+    "confusion_matrix": [
+      [
+        2409,
+        139,
+        3,
+        1
+      ],
+      [
+        181,
+        2364,
+        4,
+        6
+      ],
+      [
+        4,
+        0,
+        205,
+        18
+      ],
+      [
+        3,
+        22,
+        12,
+        584
+      ]
+    ]
+  }
+}
