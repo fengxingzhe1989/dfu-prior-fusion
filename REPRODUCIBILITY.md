@@ -117,6 +117,23 @@ The selected prior-informed probability-fusion candidate is traceable in `paper_
 
 `paper_assets/source_tables/reviewer_revision_v4/derived/prediction_and_checkpoint_asset_registry.csv` preserves the original manuscript-package provenance path in `relative_source` and gives the current repository location in `public_release_path`. The registered checkpoint hash is retained for provenance, but the checkpoint itself is not redistributed.
 
+## Reviewer 1 model x split x batch-size sensitivity analysis
+
+The controlled 2 x 2 x 2 factorial analysis can be validated, run or resumed,
+summarised, and analysed with:
+
+```bash
+python experiments/reviewer_r1_batch_split_factorial/run_factorial.py --dry-run
+python experiments/reviewer_r1_batch_split_factorial/run_factorial.py
+python experiments/reviewer_r1_batch_split_factorial/summarize_factorial.py --require-complete
+python experiments/reviewer_r1_batch_split_factorial/analyze_factorial.py \
+  --bootstrap-iters 5000 \
+  --seed 20260826
+```
+
+See `experiments/reviewer_r1_batch_split_factorial/README.md` for the frozen
+settings, factorial design, output inventory, and interpretation boundaries.
+
 ## Data Location
 
 The code uses repository-relative paths. No machine-specific absolute data path is required by the public scripts.
