@@ -1,4 +1,0 @@
-step,source_method,macro_f1,delta_vs_previous,balanced_accuracy,accuracy
-Strong RGB ensemble,Strong cls ensemble,0.9477,,0.949,0.9463
-+ prior residual reliability model,Strong cls + prior residual,0.9505,0.0028000000000000247,0.9526,0.9463
-+ probability-level residual fusion,Selected prior-informed fusion,0.963538860586384,0.013038860586384038,0.963915986760372,0.9570109151973132

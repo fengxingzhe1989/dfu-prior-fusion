@@ -1,9 +1,0 @@
-method,macro_f1,macro_f1_std,balanced_accuracy,accuracy,macro_precision,macro_recall
-ResNet50,0.9156,0.0046,0.9081,0.9093,,
-EfficientNetV2-S,0.9411,0.0079,0.9362,0.9333,,
-ConvNeXt-Tiny,0.9433,0.0041,0.941,0.9363,,
-Full LPT,0.9241,,0.9158,0.9199,,
-RA-LPT fusion,0.9274,,0.9251,0.9332,,
-Strong cls ensemble,0.9477,,0.949,0.9463,,
-Strong cls + prior residual,0.9505,,0.9526,0.9463,,
-Selected prior-informed fusion,0.9635388605863839,,0.963915986760372,0.9570109151973132,0.9633398112626818,0.963915986760372

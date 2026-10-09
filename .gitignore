@@ -57,7 +57,12 @@ runs/
 
 # Small non-image audited paper assets are intentionally versionable.
 !paper_assets/
-!paper_assets/**
+!paper_assets/**/
+!paper_assets/**/*.csv
+!paper_assets/**/*.json
+!paper_assets/**/*.md
+!paper_assets/**/*.py
+!paper_assets/**/*.yaml
 
 # Local office/app lock files
 ~$*

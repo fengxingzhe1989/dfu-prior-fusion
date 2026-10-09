@@ -67,11 +67,11 @@ class FeatureSet:
 
 FEATURE_SETS = (
     FeatureSet(
-        name="resnet50_output_stack",
+        name="resnet50_calibrated",
         model_names=("resnet50",),
         use_prior_stats=False,
         use_interactions=False,
-        description="Fold-strict ResNet50 OOF output stack without explicit prior reliability statistics.",
+        description="Fold-wise calibrated ResNet50 OOF predictions.",
     ),
     FeatureSet(
         name="cls_ensemble",

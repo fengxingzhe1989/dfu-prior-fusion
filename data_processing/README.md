@@ -6,7 +6,7 @@ Large generated files are intentionally not committed. They are written to `data
 
 ## Paper-Aligned Processing Flow
 
-1. Audit DFUC2021 annotation inclusion/exclusion reasons for Supplementary Table S1:
+1. Audit DFUC2021 annotation inclusion/exclusion reasons:
 
 ```bash
 python data_processing/run_step.py dfuc2021-exclusion-audit
@@ -50,11 +50,7 @@ python data_processing/run_step.py dfuc2021-lesion-priors -- --checkpoint output
 
 The lesion-prior step requires a trained DFUC2022 segmentation checkpoint. That checkpoint is not part of the code-only release.
 
-8. After grouped OOF prediction files and final fusion predictions have been generated, run the cross-dataset overlap exclusion sensitivity analysis:
-
-```bash
-python data_processing/run_step.py cross-dataset-overlap-exclusion-sensitivity
-```
+The old post hoc overlap-exclusion scoring entry point is no longer part of the current pipeline. Cross-dataset image-similarity auditing above remains available. For the current nested analysis, use the exact released grouped manifest and verify its frozen hash before constructing inner/stop splits; see [REPRODUCIBILITY.md](../REPRODUCIBILITY.md).
 
 ## One-Command Pipeline
 

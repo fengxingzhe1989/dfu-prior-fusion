@@ -1,0 +1,4 @@
+contrast,model_a,model_b,estimate_mean_seed_difference,sd_seed_difference,ci_low,ci_high,bootstrap_replicates,approximate_two_sided_p,holm_adjusted_p
+full_minus_neutral,full_lpt,neutral_full_lpt,0.01440924831,0.003669144008,0.004779653097,0.02440146457,5000,0.004399120176,0.01319736053
+ra_minus_output_only,ra_lpt_stack,output_only_lpt_stack,-0.002583313789,0.001665084986,-0.006649979839,0.001173333823,5000,0.1539692062,0.3079384123
+rgb_prior_minus_rgb,strong_rgb_plus_prior,strong_rgb_stack,-0.001574210256,0.003146642437,-0.005739889118,0.002537426886,5000,0.4223155369,0.4223155369

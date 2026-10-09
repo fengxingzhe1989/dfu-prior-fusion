@@ -1,5 +1,0 @@
-,pred_none,pred_infection,pred_ischaemia,pred_both
-true_none,2444,105,2,1
-true_infection,116,2434,2,3
-true_ischaemia,1,1,223,2
-true_both,0,17,6,598

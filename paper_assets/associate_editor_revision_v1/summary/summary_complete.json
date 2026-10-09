@@ -1,0 +1,87 @@
+{
+  "assets": {
+    "bootstrap_replicates.csv": "4918cd10735ce7597394d3d20dd4b5dfdee34304b765a9297e6d7a71076fa6e5",
+    "classification_fold_seed_class_metrics.csv": "33ec285a6b6876b7f67b3a402fbd47cefb2d77c8f279451d8562ba65ff459c68",
+    "classification_fold_seed_metrics.csv": "5836f62edb6f47f1e6f309f23b5ac3374ade78bc8a06acaa3d040a9c9b9f2a9d",
+    "classification_model_summary.csv": "b42e031a5d90ac931c83b73456f708fe18f8b47b544eeb3380e63f9591e1742a",
+    "classification_seed_class_metrics.csv": "c13e27bc45200c83227da06d3ac189ffa088bc0220e19260c3a770c8af9d4781",
+    "classification_seed_metrics.csv": "d9dcae07e037e8825bf4b0b2deef6b2a2bfccaeb244cb0fecf6b7417e3c2dcac",
+    "primary_contrast_bootstrap.csv": "082d6550c5b070b258f2b37087ad1b706e04130a6976718a5f875bd91fe48e16",
+    "primary_per_seed_group_bootstrap.csv": "a588638edb9f2fda3623955b5749e79a58b8207017e98e3735dc7ad3f1f4cd0b",
+    "primary_seed_contrasts.csv": "7cbc4f4ab0f83df8f26288b5e90037c12cf59f0e32da200471dda175600f729b",
+    "reference_seed_contrasts.csv": "35726cbb388d5e90690461e60d4926e9e26343ceff67c734c0a40891f3559038",
+    "segmentation_fold_seed_metrics.csv": "9c72966f364f64a6b0f1e1ce13856ce291f921b9e8ec767a0b1d2cefd9b80f8f",
+    "segmentation_grid_differences.csv": "9bddba7bba9ce910f6a28615df4705cb5fa61958a0e942231f42ebb461ce2686",
+    "segmentation_grid_summary.csv": "394c1e6805614f8ec883e1cb625d984713a0fb738648d32437896b731379aca4",
+    "segmentation_seed_metrics.csv": "17959f4f758d3756fb9a24e05c1ddc4d663e943ae1bb975f9492b792a52116c7",
+    "summary.md": "2e050fadb1cbb3caa804c252b3853826d9829cb8dbbb01d5018e009aa910b7b4",
+    "summary_input_registry.csv": "a5de263157bcb3f796940f6da1a726afaf9adb46f31ab0aadcf3f704965c93fb"
+  },
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed": 20261001,
+  "bootstrap_unit": "paired crossed seed x similarity_group",
+  "classification_images_per_seed_model": 5955,
+  "classification_models": [
+    "resnet50",
+    "efficientnetb0",
+    "convnext_tiny",
+    "efficientnetv2s",
+    "lpt_no_alignment",
+    "lpt_no_prior_mod",
+    "lpt_no_roi",
+    "lpt_stats_only",
+    "full_lpt",
+    "neutral_full_lpt",
+    "ra_lpt_stack",
+    "output_only_lpt_stack",
+    "strong_rgb_stack",
+    "strong_rgb_plus_prior"
+  ],
+  "completed_at": "2026-10-01 06:15:44 +0800",
+  "input_artifacts": 400,
+  "input_registry_sha256": "a5de263157bcb3f796940f6da1a726afaf9adb46f31ab0aadcf3f704965c93fb",
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "prediction_repair_bad_rows": 16,
+  "prediction_repair_issue_files": 6,
+  "protocol_id": "associate_editor_revision_v1",
+  "protocol_sha256": "9fce4f5895cfc1ac77a1dc644e4b5155c2ef7d659753a82e50d0ea5e0a9e543e",
+  "seeds": [
+    20260925,
+    20260926,
+    20260927,
+    20260928,
+    20260929
+  ],
+  "similarity_groups": 5670,
+  "status": "complete",
+  "summarize_script_sha256": "623c41d93032bd85fa478804d073ff4d9bab9d667ad1fcc42c9c9b1480617c47",
+  "training_pipeline_completed_at": "2026-10-01 05:41:24 +0800",
+  "upstream_markers": {
+    "classification_complete": {
+      "path": "outputs/associate_editor_revision_v1/classification_complete.json",
+      "sha256": "12d839c866e7a44085f3de0689c47fad1af054d28259f492b025a4e1fec8a8e6"
+    },
+    "classification_prediction_integrity": {
+      "path": "outputs/associate_editor_revision_v1/classification_prediction_integrity.json",
+      "sha256": "24098797ac7ac286134d9209c688203364fe787fa5c490d762d0dc4c034a9b8d"
+    },
+    "segmentation_complete": {
+      "path": "outputs/associate_editor_revision_v1/segmentation_complete.json",
+      "sha256": "36f7bac36c4b23e49354b75ec39fb42dfb8f376281e4cba5dfdbe215d427f4be"
+    },
+    "stack_complete": {
+      "path": "outputs/associate_editor_revision_v1/stack_complete.json",
+      "sha256": "113b6b6f7af8ae22a361c94d5f1dd83965f56c25e1f921552e713636ecf7d079"
+    },
+    "training_pipeline_complete": {
+      "path": "outputs/associate_editor_revision_v1/training_pipeline_complete.json",
+      "sha256": "86c6b35c106407936e6106ee5dd3b3b7f3a5f13c728742cea2d910e08c1c6b3a"
+    }
+  }
+}

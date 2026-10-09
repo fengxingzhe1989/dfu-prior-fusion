@@ -1,0 +1,53 @@
+{
+  "CAM": "final class logit, last global ResNet block; positive Grad-CAM; per-image min-max normalization",
+  "CAM_target": "archived unoccluded OOF predicted class, fixed under perturbation",
+  "CAM_threshold": 0.7,
+  "FP32_no_op_tolerance": 1e-05,
+  "LPT_CAM_scope": "global branch only, not a full explanation of ROI/statistics/RA-LPT",
+  "bootstrap": "5000 paired crossed seed x similarity-group; placements not independent samples; no p values",
+  "bootstrap_seed": 20261001,
+  "case_selection": "20 prediction-blind class-stratified cases; 5/class; globally unique groups; all seed plates",
+  "checkpoint_source": "new revision outer refits; all five seeds; no performance selection",
+  "drop": "FP32 unoccluded probability minus FP32 occluded probability; never mixed with FP16 baseline",
+  "empty_immovable": "separate status; random-controlled contrasts NA, not zero",
+  "fallback": "original prior-enhancement retained, including attenuation of rounded mean fill",
+  "interpretability_seed": 20261002,
+  "interpretation": "model sensitivity to an uncertain image-derived prior; not anatomical or clinical validation",
+  "mask_grid": "native RGB dimensions; float prior resized linearly to native before threshold",
+  "models": [
+    "resnet50",
+    "lpt_full"
+  ],
+  "occlusion_batch_size": 16,
+  "occlusion_coordinate_system": "source RGB; global and ROI rebuilt from same perturbed source",
+  "occlusion_fill_RGB_u8": [
+    124,
+    116,
+    104
+  ],
+  "outer_folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "placements": "up to 30 unique legal nonidentity translations without replacement",
+  "precision": "archived baseline replay AMP FP16 batch16 with original runtime; CAM/perturbations FP32 TF32 off",
+  "primary_sensitivity_endpoint": "prior-mask drop minus mean random-placement drop for archived predicted class",
+  "prior_ROI_stats": "original prior, original ROI coordinates/fallback and stats fixed",
+  "prior_threshold": 0.3,
+  "projection_for_CAM": "nearest-neighbour binary native mask to 224; zero projected support reported separately",
+  "replay_label_disagreements_allowed": 0,
+  "replay_tolerance": 1e-06,
+  "secondary": "true-label drops, background drops, CAM overlap; all exploratory",
+  "seeds": [
+    20260925,
+    20260926,
+    20260927,
+    20260928,
+    20260929
+  ],
+  "status": "frozen_before_interpretation",
+  "version": "editor10_12_interpretability_v1"
+}

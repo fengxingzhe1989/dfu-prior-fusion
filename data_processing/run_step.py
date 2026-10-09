@@ -43,10 +43,6 @@ STEPS = {
         script=Path("experiments/cross_task_prior_transfer/generate_dfuc2021_priors.py"),
         description="Generate DFUC2021 soft lesion-prior maps from a trained DFUC2022 segmenter.",
     ),
-    "cross-dataset-overlap-exclusion-sensitivity": ProcessingStep(
-        script=Path("experiments/reliability_aware_prior_fusion/cross_dataset_overlap_exclusion_sensitivity.py"),
-        description="Recompute grouped OOF metrics after excluding DFUC2021 images involved in broad cross-dataset visual-overlap candidates.",
-    ),
 }
 
 

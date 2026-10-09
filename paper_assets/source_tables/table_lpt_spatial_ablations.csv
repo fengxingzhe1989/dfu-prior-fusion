@@ -1,7 +1,0 @@
-method,group,macro_f1,macro_f1_std,balanced_accuracy,balanced_accuracy_std,macro_precision,macro_precision_std,macro_recall,macro_recall_std,accuracy,accuracy_std
-Full LPT,spatial_prior_transfer,0.924374,0.021514,0.925063,0.021707,0.924454,0.022628,0.925063,0.021707,0.908816,0.021548
-LPT no alignment,spatial_prior_transfer,0.932187,0.008983,0.925708,0.013652,0.939589,0.009186,0.925708,0.013652,0.919563,0.012149
-LPT no prior modulation,spatial_prior_transfer,0.930842,0.009889,0.924316,0.013241,0.938459,0.010851,0.924316,0.013241,0.915365,0.008025
-LPT no ROI,spatial_prior_transfer,0.927571,0.008612,0.921044,0.009805,0.935494,0.011876,0.921044,0.009805,0.916373,0.008622
-LPT stats only,spatial_prior_transfer,0.927358,0.019194,0.917528,0.025792,0.939368,0.013751,0.917528,0.025792,0.919395,0.012248
-LPT random prior,spatial_prior_transfer,0.920375,0.018964,0.911008,0.023527,0.932142,0.016359,0.911008,0.023527,0.910495,0.015918

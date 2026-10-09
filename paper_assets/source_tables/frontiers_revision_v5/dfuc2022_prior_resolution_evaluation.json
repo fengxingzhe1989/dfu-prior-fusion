@@ -1,5 +1,5 @@
 {
-  "checkpoint": "/home/cw/DFU/outputs/checkpoints/dfuc2022_seg_deeplabv3p_fold1_best.pt",
+  "checkpoint": "outputs/checkpoints/dfuc2022_seg_deeplabv3p_fold1_best.pt",
   "fold": 1,
   "checkpoint_epoch": 71,
   "checkpoint_metrics": {

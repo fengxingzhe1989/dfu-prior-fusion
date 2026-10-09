@@ -1,37 +1,42 @@
-PYTHON := uv run python
+PYTHON ?= uv run python
 
-.PHONY: env tensorboard notebook exp1-smoke exp1-fold0 exp1-cv exp2-splits exp2-resnet50-cv exp2-efficientnetb0-cv exp3-priors exp3-lpt-cv
+.PHONY: help env check test prepare-dry-run ae-classification ae-remaining ae-summary ae-interpret-prepare ae-interpret-smoke ae-interpret ae-interpret-verify legacy-factorial-dry-run
+
+help:
+	@echo "Start with make check and make test. Read REPRODUCIBILITY.md before training."
 
 env:
-	uv sync --python 3.13
+	uv sync --frozen --python 3.13
 
-tensorboard:
-	uv run tensorboard --logdir outputs/logs --port 6006
+check:
+	$(PYTHON) scripts/check_release.py
 
-notebook:
-	uv sync --extra notebook
-	uv run jupyter lab
+test:
+	$(PYTHON) -m unittest discover -s experiments/associate_editor_revision_v1 -p 'test_*.py' -v
 
-exp1-smoke:
-	uv run python experiments/dfuc2022_seg_baseline/train.py --fold 0 --epochs 1 --batch-size 2 --num-workers 0 --max-train-samples 8 --max-val-samples 4 --disable-pretrained
+prepare-dry-run:
+	$(PYTHON) data_processing/prepare_manuscript_data.py --dry-run
 
-exp1-fold0:
-	uv run python experiments/dfuc2022_seg_baseline/train.py --fold 0
+ae-classification:
+	$(PYTHON) experiments/associate_editor_revision_v1/run_classification_matrix.py
 
-exp1-cv:
-	uv run python experiments/dfuc2022_seg_baseline/run_cv.py --batch-size 8 --num-workers 0 --skip-existing
+ae-remaining:
+	$(PYTHON) experiments/associate_editor_revision_v1/run_remaining_pipeline.py
 
-exp2-splits:
-	uv run python experiments/dfuc2021_cls_baseline/prepare_splits.py
+ae-summary:
+	$(PYTHON) experiments/associate_editor_revision_v1/summarize.py
 
-exp2-resnet50-cv:
-	uv run python experiments/dfuc2021_cls_baseline/run_cv.py --config experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_resnet50_cv5_v1.yaml --batch-size 64 --num-workers 4 --skip-existing
+ae-interpret-prepare:
+	$(PYTHON) experiments/associate_editor_revision_v1/run_interpretability.py --mode prepare
 
-exp2-efficientnetb0-cv:
-	uv run python experiments/dfuc2021_cls_baseline/run_cv.py --config experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_efficientnetb0_cv5_v1.yaml --batch-size 96 --num-workers 4 --skip-existing
+ae-interpret-smoke:
+	$(PYTHON) experiments/associate_editor_revision_v1/run_interpretability.py --mode smoke
 
-exp3-priors:
-	uv run python experiments/cross_task_prior_transfer/generate_dfuc2021_priors.py --checkpoint outputs/checkpoints/dfuc2022_seg_deeplabv3p_cv5_v1_best_overall.pt --batch-size 256 --num-workers 4 --skip-existing
+ae-interpret:
+	$(PYTHON) experiments/associate_editor_revision_v1/run_interpretability.py --mode run
 
-exp3-lpt-cv:
-	uv run python experiments/cross_task_prior_transfer/run_lpt_cv.py --config experiments/cross_task_prior_transfer/configs/cross_task_lpt_resnet50_mobilenetv3_cv5_v1.yaml --batch-size 128 --num-workers 4 --skip-existing
+ae-interpret-verify:
+	$(PYTHON) experiments/associate_editor_revision_v1/resume_interpretability_finalization.py --verify-only
+
+legacy-factorial-dry-run:
+	$(PYTHON) experiments/reviewer_r1_batch_split_factorial/run_factorial.py --dry-run

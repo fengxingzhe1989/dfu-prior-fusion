@@ -1,2 +1,0 @@
-overall_rank,rank_among_strong_lpt_full_output_candidates,method,macro_f1,balanced_accuracy,macro_precision,macro_recall,accuracy,biased,bias,candidate
-13,1,full_oof_selected_publication_fusion,0.963538860586384,0.963915986760372,0.9633398112626818,0.963915986760372,0.9570109151973132,True,"[-0.35, -0.025, -0.25, 0.0]",0.400*strong_lpt_full_output_ensemble + 0.350*dfuc2021_cls_convnext_tiny_seed2027 + 0.250*dfuc2021_cls_efficientnetv2s_seed3407

@@ -1,27 +1,21 @@
-# Paper Assets
+# Non-image research assets
 
-This directory contains small non-image source tables used to audit manuscript-reported values.
+## Current five-seed evidence
 
-Included files are CSV/JSON/Markdown summaries derived from fold-strict validation outputs, similarity audits, probability-fusion search summaries, group-level bootstrap summaries, cross-dataset overlap sensitivity summaries, and interpretability summaries.
+`associate_editor_revision_v1/summary/` contains complete classification, stack and segmentation aggregate outputs, bootstrap replicates, a relative-path input registry and archived completion evidence.
 
-Additional audit assets are provided in:
+`associate_editor_revision_v1/interpretability/` contains the frozen inference contract, 20 prediction-blind case identifiers, coverage/seed/aggregate summaries, bootstrap replicates and audit records. It contains no image pixels or case arrays. In the frozen coverage tables, `n_invalid_cam` denotes unavailable overlap due to empty prior support, not failure to generate Grad-CAM; see `qa_acceptance.json`.
 
-- `split_metadata/`: non-image DFUC2021 split manifests, including the similarity-grouped manifest used to verify fold/group assignments.
-- `fusion_search/`: final probability-fusion search logs and the selected prior-informed candidate trace.
-- `figure_scripts/`: scripts for regenerating source-table-based numeric figures from the public source tables.
-- `analysis_scripts/`: scripts for the architecture-only complexity benchmark, prior-resolution audit, and reviewer-requested bootstrap analyses.
-- `source_tables/reviewer_revision_v2/`: the similarity-group manifest and six fixed grouped OOF prediction tables used by the reviewer-revision clinical-metric analysis.
-- `source_tables/reviewer_revision_v7/`: derived per-class and binary-endpoint tables with 5,000 similarity-group bootstrap intervals.
-- `source_tables/reviewer_revision_v3/derived/`: matched grouped metrics, repeated-run summaries, bootstrap comparisons, and mixed-component sensitivity tables used by Main Figures 3 and 4.
-- `source_tables/reviewer_revision_v4/derived/`: matched cross-dataset exclusion tables and the post hoc selected-candidate per-image prediction asset used by Main Figure 6.
-- `source_tables/frontiers_revision_v5/`: architecture/latency and prior-resolution audit outputs plus fold-summary logs supporting Supplementary Tables S14-S16.
+The interpretation `summary_complete.json` refers to the original input registry hash. The released `input_registry_relative.csv` removes machine-specific prefixes and is a separately hashed derivative. Other copied aggregate result values are unchanged. Archived completion records can refer to assets not publicly distributed and do not imply that this repository includes every checkpoint or prediction.
 
-Not included:
+## Supporting and historical assets
 
-- raw DFUC images or masks;
-- resized or processed image arrays;
-- trained checkpoints;
-- complete prediction archives from all training runs;
-- private machine logs or credentials.
+- `split_metadata/`: exact original standard/grouped manifests and summaries, with image IDs/relative paths only.
+- `source_tables/methodology_audit_v7/`: grouping and cross-dataset image-similarity audits retained for data provenance.
+- `source_tables/reviewer_revision_v3/derived/similarity_threshold_topology_sensitivity.csv`: grouping-topology audit, not new model training.
+- `source_tables/frontiers_revision_v5/`: historical original-generator resolution audit and architecture-only complexity benchmark.
+- `analysis_scripts/`: the two corresponding historical audit scripts.
+- `historical_factorial/`: verified cell/fold/contrast summaries from the one-seed batch/split experiment; not the new primary analysis.
+- `release_audit/`: copied-asset hashes and exact removed-file inventory.
 
-The DFUC datasets must be requested from the original dataset authors under the applicable Diabetic Foot Ulcer Dataset licence. The selected grouped OOF prediction tables contain image identifiers, labels, fold/group identifiers, decisions, and class probabilities but no image pixels. They are included only to make the reported analyses reproducible when raw data redistribution is not permitted.
+Superseded full-OOF search, old model-result tables and old figure builders are recoverable in Git history, not mixed into the current analysis directory.

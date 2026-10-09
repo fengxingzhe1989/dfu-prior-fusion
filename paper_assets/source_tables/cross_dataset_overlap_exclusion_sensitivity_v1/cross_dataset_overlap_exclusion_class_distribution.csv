@@ -1,4 +1,0 @@
-scope,samples,none,infection,ischaemia,both
-excluded_broad_cross_dataset_overlap_images,241,130,78,14,19
-retained_after_exclusion,5714,2422,2477,213,602
-full_oof_set,5955,2552,2555,227,621

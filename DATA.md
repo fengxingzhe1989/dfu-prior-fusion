@@ -1,32 +1,15 @@
-# Data Access
+# Data and artifact boundaries
 
-This release does not redistribute DFUC images, masks, processed image data, or checkpoints.
+Obtain DFUC2021 and DFUC2022 from the original providers under their applicable access/licence terms. This repository grants no dataset access and redistributes no raw photographs, masks, trained checkpoints or case-plate pixels.
 
-Audited non-image manuscript assets are included under `paper_assets/` to make reported values traceable. These include source tables, public split/group metadata, selected fusion-search logs, source-table figure-generation scripts, the matched grouped OOF prediction files needed to reproduce the reviewer-revision bootstrap comparisons, and the per-image selected-candidate prediction table used for descriptive full-OOF summaries. They do not contain raw DFUC images, segmentation masks, or checkpoints.
+- `data_raw/2021_dfuc2021/` and `data_raw/2022_dfuc2022/`: immutable licensed source datasets.
+- `data_processed/`: derived manifests, nested assignments and lesion priors.
+- `outputs/`: checkpoints, predictions, completion markers, summaries and figures.
 
-Access to the DFUC image datasets must be obtained from the original dataset authors under the applicable **Diabetic Foot Ulcer Dataset: Licence to Use** terms. Users should request the data/licence from the dataset authors or official dataset access point; this repository provides code and non-image derived audit assets only.
+Inspect preprocessing CLI `--help` for exact annotation filenames and subdirectories. Do not move an existing research dataset to fit a new checkout; use a separate reproduction workspace or appropriate links.
 
-After obtaining the dataset licence and files, place them under:
+Small non-image split metadata, aggregate seed/fold/class metrics, bootstrap replicates and hashes are versioned under `paper_assets/`. Image IDs are dataset filenames, not patient identifiers. Similarity groups cannot replace unavailable patient/case linkage.
 
-```text
-data_raw/
-  2021_dfuc2021/
-  2022_dfuc2022/
-  pre_challenge/
-```
+Exact replay of the fixed-generator classification analysis additionally requires the archived prior checkpoint with SHA256 `7ffbb2de0e6a9ef6c177af658587e1b94429b27a9e97b4f1a6dd2df3925d3337`, generated priors and downstream checkpoints for interpretation. They are not included. Access, if permissible, must be arranged separately with the authors; this repository does not guarantee availability. A freshly trained generator is a different realization unless its artifacts match.
 
-Generated intermediate files should be written to `data_processed/`; generated training and analysis outputs should be written to `outputs/`. Both directories are ignored by Git in this release.
-
-The bundled public audit assets are organized as:
-
-- `paper_assets/source_tables/`: manuscript source tables and supplementary table inputs.
-- `paper_assets/split_metadata/`: fold assignments and similarity-group identifiers for DFUC2021 image names.
-- `paper_assets/fusion_search/`: final probability-fusion search logs and selected-candidate trace tables.
-- `paper_assets/figure_scripts/`: scripts that regenerate manuscript-style figures from source tables, without requiring raw images.
-
-The code that creates these generated files is in `data_processing/`. The main entry points are:
-
-```bash
-python data_processing/run_step.py --list
-python data_processing/prepare_manuscript_data.py --dry-run
-```
+Do not commit individual-level predictions, medical images or heavyweight models as part of routine execution. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) and [RELEASE_SCOPE.md](RELEASE_SCOPE.md).

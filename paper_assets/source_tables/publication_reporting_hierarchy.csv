@@ -1,9 +1,0 @@
-method,estimate_type,macro_f1,macro_f1_std,balanced_accuracy,accuracy,selection_scope,source
-ResNet50 grouped,Five-run grouped mean,0.9156,0.0046,0.9081,0.9093,similarity-grouped retraining,publication_final_metrics.csv
-EfficientNetV2-S grouped,Five-run grouped mean,0.9411,0.0079,0.9362,0.9333,similarity-grouped retraining,publication_final_metrics.csv
-ConvNeXt-Tiny grouped,Five-run grouped mean,0.9433,0.0041,0.9410,0.9363,similarity-grouped retraining,publication_final_metrics.csv
-Full LPT grouped,Single grouped OOF estimate,0.9241,,0.9158,0.9199,similarity-grouped OOF,publication_final_metrics.csv
-RA-LPT fusion grouped,Single grouped OOF estimate,0.9274,,0.9251,0.9332,similarity-grouped OOF,publication_final_metrics.csv
-Fold-held-out fusion-selection trace,Precomputed-OOF fold-held-out selection trace,0.9529136566,,0.9473788007,0.9479429051,second-level candidate/weight/bias selection; not end-to-end nested validation,publication_baseline5_nested_metrics.csv
-Unrestricted best RGB-only fusion,Full-OOF development upper bound,0.964246,,0.959659,0.953820,global rank 1 in full-OOF search,publication_baseline5_full_oof_fusion_search.csv
-Prior-informed fusion containing strong LPT output,Post hoc full-OOF development upper bound,0.9635388606,,0.9639159868,0.9570109152,overall rank 13 and rank 1 among strong-LPT-output candidates,publication_selected_prior_informed_candidate_trace.csv
