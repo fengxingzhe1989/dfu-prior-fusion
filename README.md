@@ -8,12 +8,16 @@ The current entry point is [experiments/associate_editor_revision_v1](experiment
 
 The main estimand is the mean of five seed-specific pooled-OOF Macro-F1 differences. Three incremental contrasts are evaluated: Full LPT versus neutral Full LPT; RA-LPT versus the corresponding output-only LPT stack; and strong RGB plus explicit prior features versus strong RGB. The Full-versus-neutral contrast is positive, but the two stack-level increments are not established. Complete-system comparisons against ResNet50 are descriptive and do not isolate a prior effect. These are internal image-grouped estimates, not patient-independent or external clinical validation.
 
+Current interpretation coverage includes a [later, separately frozen three-RGB-model extension](experiments/interpretability_rgb_extension_v1/PROTOCOL.md): EfficientNet-B0, ConvNeXt-Tiny and EfficientNetV2-S join the initial ResNet50 and Full LPT analysis. The combined scope is five models, five seeds, 125 inference jobs and 148,875 image-model-seed records, retaining the original 20 prediction-blind cases. This extension is exploratory; it does not change the three primary classification contrasts or involve new model training.
+
 ## Start here
 
 ```bash
 uv sync --frozen --python 3.13
 uv run python scripts/check_release.py
+uv run python scripts/check_rgb_extension_release.py
 uv run python -m unittest discover -s experiments/associate_editor_revision_v1 -p 'test_*.py' -v
+uv run python -m unittest experiments.interpretability_rgb_extension_v1.test_extension -v
 ```
 
 These checks do not train models or require medical images. Full execution requires licensed datasets and the separately archived frozen prior checkpoint: this is **not** a self-contained data/checkpoint release. Read [DATA.md](DATA.md) and [REPRODUCIBILITY.md](REPRODUCIBILITY.md) first.
@@ -21,10 +25,12 @@ These checks do not train models or require medical images. Full execution requi
 ## Contents
 
 - `experiments/associate_editor_revision_v1/`: current frozen training, inference, summarization and recovery code.
+- `experiments/interpretability_rgb_extension_v1/`: sealed three-RGB-model extension, combined five-model summaries/exports and data-free tests.
 - Other experiment directories: shared architecture, preprocessing and feature-building dependencies; their legacy runners are not the current evaluation entry point.
 - `experiments/reviewer_r1_batch_split_factorial/`: historical one-seed factorial sensitivity analysis, separate from the new five-seed evidence.
 - `data_processing/`: dataset inclusion, split construction and similarity-audit helpers.
 - `paper_assets/associate_editor_revision_v1/`: complete non-image aggregate results, including all seeds and bootstrap replicates.
+- `paper_assets/interpretability_rgb_extension_v1/`: combined five-model interpretation aggregates and bootstrap replicates, with completion/provenance metadata.
 - `paper_assets/source_tables/` and `paper_assets/historical_factorial/`: retained supporting audits, explicitly historical where applicable.
 - `paper_assets/release_audit/`: frozen source/output hashes and recoverable cleanup inventory.
 

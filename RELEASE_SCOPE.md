@@ -21,6 +21,8 @@ Exact paths and original hashes are in `paper_assets/release_audit/removed_files
 
 ## Provenance
 
+The 11 October 2026 addition publishes the separately frozen three-RGB-model interpretability extension and combined five-model aggregates. `paper_assets/release_audit/rgb_extension_asset_registry.csv` records the original and released hashes. The four extension protocol/code/test files match the sealed execution files. This addition does not modify the initial two-model code, the original frozen-asset registry or any scientific result. The only transformed aggregate metadata is the explicitly path-redacted input registry. Checkpoints, per-image predictions, medical images and case arrays remain excluded. See Sections 4–6 of `REPRODUCIBILITY.md` for the initial-versus-extension boundary, 50 + 75 = 125 job counts and the later display-only palette change.
+
 `paper_assets/release_audit/frozen_asset_registry.csv` records the byte-identical source/output copies. The one path-redacted registry is explicitly identified with its original hash. Documentation/publication wrappers are separate from sealed scientific code. Archived markers may refer to undistributed inference/model assets, not all-public inputs.
 
 The retained historical generator-resolution JSON also replaces its old machine-specific checkpoint prefix with a repository-relative path; no numerical result was edited. The original JSON SHA256 is `53190f756043e5a043bc89a73a0284eff4266f2ef2fdb3ded457337e2b72976b` and remains recoverable in the preceding Git revision.
