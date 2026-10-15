@@ -10,14 +10,18 @@ The main estimand is the mean of five seed-specific pooled-OOF Macro-F1 differen
 
 Current interpretation coverage includes a [later, separately frozen three-RGB-model extension](experiments/interpretability_rgb_extension_v1/PROTOCOL.md): EfficientNet-B0, ConvNeXt-Tiny and EfficientNetV2-S join the initial ResNet50 and Full LPT analysis. The combined scope is five models, five seeds, 125 inference jobs and 148,875 image-model-seed records, retaining the original 20 prediction-blind cases. This extension is exploratory; it does not change the three primary classification contrasts or involve new model training.
 
+A later [training-size sensitivity analysis](experiments/training_size_sensitivity_v3/README.md) evaluates Full LPT and its architecture-matched neutral-prior control at four nested training budgets (25%, 50%, 75%, 100%), using all five trajectories and fixed outer evaluation folds. All four endpoints were freshly trained under the budget-first procedure: **400 additional CNN fits, 200 outer prediction cells and 40 pooled-OOF cells**, with no reused endpoint. Performance increased with training budget in both arms; mean Full-minus-neutral differences were positive at all four budgets, but all four pointwise 95% intervals included zero. This exploratory extension does not replace the primary analysis or establish sample-size sufficiency.
+
 ## Start here
 
 ```bash
 uv sync --frozen --python 3.13
 uv run python scripts/check_release.py
 uv run python scripts/check_rgb_extension_release.py
+uv run python scripts/check_training_size_release.py
 uv run python -m unittest discover -s experiments/associate_editor_revision_v1 -p 'test_*.py' -v
 uv run python -m unittest experiments.interpretability_rgb_extension_v1.test_extension -v
+uv run python experiments/training_size_sensitivity_v3/test_design.py
 ```
 
 These checks do not train models or require medical images. Full execution requires licensed datasets and the separately archived frozen prior checkpoint: this is **not** a self-contained data/checkpoint release. Read [DATA.md](DATA.md) and [REPRODUCIBILITY.md](REPRODUCIBILITY.md) first.
@@ -26,11 +30,13 @@ These checks do not train models or require medical images. Full execution requi
 
 - `experiments/associate_editor_revision_v1/`: current frozen training, inference, summarization and recovery code.
 - `experiments/interpretability_rgb_extension_v1/`: sealed three-RGB-model extension, combined five-model summaries/exports and data-free tests.
+- `experiments/training_size_sensitivity_v3/`: byte-identical frozen four-budget source, protocol and design tests; read its publication README before attempting training.
 - Other experiment directories: shared architecture, preprocessing and feature-building dependencies; their legacy runners are not the current evaluation entry point.
 - `experiments/reviewer_r1_batch_split_factorial/`: historical one-seed factorial sensitivity analysis, separate from the new five-seed evidence.
 - `data_processing/`: dataset inclusion, split construction and similarity-audit helpers.
 - `paper_assets/associate_editor_revision_v1/`: complete non-image aggregate results, including all seeds and bootstrap replicates.
 - `paper_assets/interpretability_rgb_extension_v1/`: combined five-model interpretation aggregates and bootstrap replicates, with completion/provenance metadata.
+- `paper_assets/training_size_sensitivity_v3/`: complete four-budget aggregate results and saved bootstrap replicates, with explicitly scoped provenance metadata; no per-image predictions or checkpoints.
 - `paper_assets/source_tables/` and `paper_assets/historical_factorial/`: retained supporting audits, explicitly historical where applicable.
 - `paper_assets/release_audit/`: frozen source/output hashes and recoverable cleanup inventory.
 

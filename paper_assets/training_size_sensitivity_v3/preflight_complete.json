@@ -1,0 +1,10 @@
+{
+  "budget_fold_trajectory_cells": 100,
+  "completed_at": "2026-10-12T03:46:57.511639+00:00",
+  "minimum_class_count_in_fit_stop": 9,
+  "new_fits": 400,
+  "reused_fits": 0,
+  "sealed_inputs_sha256": "39eeadd4b5f2d70bd821f962d1b834989ea9f9ca1ebe5684e18e22732c77cba7",
+  "status": "complete",
+  "subset_rows": 400
+}

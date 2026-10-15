@@ -1,0 +1,14 @@
+{
+  "completed_at": "2026-10-12T03:48:05.670470+00:00",
+  "excluded_from_results": true,
+  "files": {
+    "outputs/training_size_sensitivity_v3/smoke/assignments.csv": "6a2442db3b6873ea07163addeaee73627b9360165075703c88372167d305eb45",
+    "outputs/training_size_sensitivity_v3/smoke/classification/seed_20260925/outer_0/lpt_full/direct_refit/complete.json": "18caaa294aa840897ab800965d09f715a18d2387258bb34b723f53d5f11a59e4",
+    "outputs/training_size_sensitivity_v3/smoke/classification/seed_20260925/outer_0/lpt_full/direct_select/complete.json": "7f4886522c3c7a58629468bc29c5c0fa53621d0ed4a67706a9ad7e23b46cc162",
+    "outputs/training_size_sensitivity_v3/smoke/classification/seed_20260925/outer_0/lpt_neutral/direct_refit/complete.json": "4d9b9fac0f731b396e6c48802447e4d6365d9ae16ab362b974e9813055b01262",
+    "outputs/training_size_sensitivity_v3/smoke/classification/seed_20260925/outer_0/lpt_neutral/direct_select/complete.json": "e3985bdc8c8e8f913460942a87b4ce9b077c2492485884496d9babc95e72998e"
+  },
+  "fits": 4,
+  "seal_sha256": "39eeadd4b5f2d70bd821f962d1b834989ea9f9ca1ebe5684e18e22732c77cba7",
+  "status": "complete"
+}
