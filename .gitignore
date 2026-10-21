@@ -64,5 +64,8 @@ runs/
 !paper_assets/**/*.py
 !paper_assets/**/*.yaml
 
+# Explicitly included final manuscript figure; raw image datasets remain excluded.
+!paper_assets/figures/Figure1.tiff
+
 # Local office/app lock files
 ~$*

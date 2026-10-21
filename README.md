@@ -2,6 +2,10 @@
 
 Code and non-image aggregate results for *Incremental value of a cross-dataset ulcer-region prior for infection and ischaemia classification in diabetic foot ulcer image patches* (manuscript 1944475).
 
+## Study overview figure
+
+[Download Figure 1 (final manuscript TIFF)](paper_assets/figures/Figure1.tiff): study design, incremental comparisons and evaluation hierarchy. This manuscript figure is included separately from the non-image aggregate results; it is not a release of the underlying image datasets.
+
 ## Current analysis
 
 The current entry point is [experiments/associate_editor_revision_v1](experiments/associate_editor_revision_v1/README.md): the frozen five-seed nested classification/stacking evaluation, architecture-matched neutral-prior control, independent source-domain segmentation audit, and exploratory interpretation analysis. All seeds 20260925–20260929 are retained; the shared classification cohort has 5,955 images in 5,670 image-similarity groups.
