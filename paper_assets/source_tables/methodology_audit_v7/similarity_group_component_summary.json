@@ -1,0 +1,17 @@
+{
+  "samples": 5955,
+  "near_duplicate_pairs_used": 343,
+  "pair_scope": "all pHash/dHash near-duplicate candidates in similar_image_audit_pairs.csv",
+  "similarity_groups": 5670,
+  "non_singleton_groups": 151,
+  "images_in_non_singleton_groups": 436,
+  "largest_group_size": 49,
+  "mixed_label_non_singleton_groups": 17,
+  "different_label_near_duplicate_pairs": 70,
+  "cross_fold_same_label_pairs_original_split": 221,
+  "cross_fold_different_label_pairs_original_split": 52,
+  "within_fold_same_label_pairs_original_split": 52,
+  "within_fold_different_label_pairs_original_split": 18,
+  "near_duplicate_pairs_same_fold_after_grouping": 343,
+  "near_duplicate_pairs_cross_fold_after_grouping": 0
+}

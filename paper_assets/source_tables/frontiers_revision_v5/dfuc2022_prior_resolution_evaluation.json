@@ -1,0 +1,32 @@
+{
+  "checkpoint": "outputs/checkpoints/dfuc2022_seg_deeplabv3p_fold1_best.pt",
+  "fold": 1,
+  "checkpoint_epoch": 71,
+  "checkpoint_metrics": {
+    "dice": 0.7983138070676634,
+    "iou": 0.7022721710570314,
+    "precision": 0.8172710895781328,
+    "recall": 0.8330711519108204,
+    "loss": 0.1180075889825821
+  },
+  "device": "NVIDIA GeForce RTX 4090",
+  "torch": "2.7.1+cu126",
+  "cuda": "12.6",
+  "cudnn": 90501,
+  "resolutions": {
+    "training_grid_512x384": {
+      "samples": 400,
+      "dice": 0.7983302355979239,
+      "iou": 0.7022983444251721,
+      "precision": 0.8172872745117405,
+      "recall": 0.8330780699239162
+    },
+    "prior_inference_grid_224x224": {
+      "samples": 400,
+      "dice": 0.6185406605635613,
+      "iou": 0.5283833067664486,
+      "precision": 0.8318413628521486,
+      "recall": 0.613184208494372
+    }
+  }
+}

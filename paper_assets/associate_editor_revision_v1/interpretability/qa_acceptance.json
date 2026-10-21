@@ -1,0 +1,33 @@
+{
+  "status": "accepted_with_reporting_clarifications",
+  "date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "source_registry_sha256": "c3133406d5de79a88176ccb202babbaf0482b4080c3a33eddfcaf441f218f823",
+  "summary_complete_sha256": "3410c3e32ba024866a1ef6f1c968d1b2f3da7161948acf079d94fb981e2f7a1e",
+  "figures_complete_sha256": "d4bef8dbe5302004653f87ba907a3afeb6ecd2c64540b1c39c3c509a7dc24e0b",
+  "server_frozen_source_audit_passed": true,
+  "local_copied_asset_hashes_passed": true,
+  "completed_jobs": 50,
+  "job_assets_verified": 350,
+  "summary_assets_verified": 9,
+  "figure_assets_verified": 67,
+  "quantitative_rows": 59550,
+  "fixed_cases": 20,
+  "case_arrays_verified": 200,
+  "actual_png_plates_visually_inspected": 20,
+  "svg_plates_with_editable_text_verified": 20,
+  "pdf_independent_raster_visual_qa": false,
+  "visual_issues_requiring_changes": [],
+  "archived_prediction_replay_label_disagreements": 0,
+  "cam_signal_invalid_count": 0,
+  "overlap_unavailable_images_per_seed_model": 1024,
+  "precision_disagreements_all_seeds": {"resnet50": 13, "lpt_full": 51},
+  "reporting_clarifications": [
+    "n_invalid_cam in the frozen coverage output means overlap unavailable owing to empty prior support, not failure to generate a CAM",
+    "Interpretation uses FP32 probabilities and gradients for a fixed archived OOF predicted-class target; FP32 and archived predictions are not identical for all images",
+    "Exploratory generated-prior-relative model sensitivity is not anatomical, causal, patient-independent or clinical validation"
+  ],
+  "sealed_outputs_modified": false,
+  "manuscript_modified": false,
+  "reply_submitted": false
+}

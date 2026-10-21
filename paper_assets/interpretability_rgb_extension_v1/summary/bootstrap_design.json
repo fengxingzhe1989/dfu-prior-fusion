@@ -1,0 +1,8 @@
+{
+  "draw_order": "group_indices_then_seed_indices_per_replicate",
+  "draw_sequence_sha256": "e1e5b26ee048bc228ae92c7ae1f8683b2bf7ecff3b5968be7335e7e86b5edce0",
+  "n_group_draws": 5670,
+  "n_seed_draws": 5,
+  "replicates": 5000,
+  "seed": 20261001
+}

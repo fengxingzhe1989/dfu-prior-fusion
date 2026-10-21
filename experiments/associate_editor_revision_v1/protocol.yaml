@@ -1,0 +1,105 @@
+protocol_id: associate_editor_revision_v1
+date: '2026-09-25'
+status: frozen_execution_running
+training_started: true
+seed_count: 5
+training_seeds: [20260925, 20260926, 20260927, 20260928, 20260929]
+split_seed: 20260925
+bootstrap_seed: 20261001
+interpretability_seed: 20261002
+seed_derivation: 'SeedSequence([base_seed, outer_fold, inner_fold_plus_one, stage_id]); stage_id 1=inner fit, 2=refit, 3=direct selection, 4=direct refit; same derived streams for Full and neutral'
+data:
+  manifest: data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_similarity_grouped_manifest.csv
+  server_manifest_sha256: aec52b1c6a8fc847928676409f7efef012a99c96cd15f5dfc9de2195cb402dff
+  nested_assignment_manifest: data_processed/associate_editor_revision_v1/nested_grouped_assignments.csv
+  nested_assignment_manifest_sha256: f0d4590e47ba0e58b2d24236dbace32ea6cb62f45628d5470c2914744d166dbf
+  group_column: similarity_group
+  n_images: 5955
+  n_groups: 5670
+  prior_meta: data_processed/cross_task_lesion_prior_v1/dfuc2021_train_prior_meta.csv
+  prior_checkpoint: outputs/checkpoints/dfuc2022_seg_deeplabv3p_cv5_v1_best_overall.pt
+  expected_prior_checkpoint_sha256: 7ffbb2de0e6a9ef6c177af658587e1b94429b27a9e97b4f1a6dd2df3925d3337
+  patient_independent: false
+  freeze_prior_generator: true
+splits:
+  outer: original_grouped_5_folds
+  inner: {n_splits: 3, stratified: true, grouped: true, shuffle: true}
+  stop: {n_splits: 5, selected_fold: 0, stratified: true, grouped: true, shuffle: true}
+  min_fit_stop_samples_per_class: 10
+  rng_policy: 'inner random_state=split_seed+100*outer_fold; stop random_state=split_seed+100*outer_fold+inner_fold+1; direct stop uses inner_fold=3'
+cnn_common:
+  input_size: 224
+  batch_size: 16
+  max_epochs: 60
+  patience: 12
+  workers: 4
+  amp: true
+  amp_dtype: float16
+  grad_accum_steps: 1
+  checkpoint_metric: macro_f1
+  checkpoint_tie: earlier_epoch
+  base_refit_epoch: median_of_three_inner_best_epochs
+  direct_refit_epoch: own_stop_best_epoch
+  scheduler_horizon_epochs: 60
+  outer_evaluation_during_training: false
+source_configs:
+  resnet50: experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_resnet50_cv5_v1.yaml
+  efficientnet_b0: experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_efficientnetb0_cv5_v1.yaml
+  convnext_tiny: experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_convnext_tiny_cv5_v1.yaml
+  efficientnet_v2_s: experiments/dfuc2021_cls_baseline/configs/dfuc2021_cls_efficientnetv2s_cv5_v1.yaml
+  full_lpt: experiments/cross_task_prior_transfer/configs/cross_task_lpt_resnet50_mobilenetv3_cv5_v1.yaml
+  no_alignment: experiments/cross_task_prior_transfer/configs/cross_task_lpt_no_alignment_cv5_v1.yaml
+  no_modulation: experiments/cross_task_prior_transfer/configs/cross_task_lpt_no_prior_mod_cv5_v1.yaml
+  no_roi: experiments/cross_task_prior_transfer/configs/cross_task_lpt_no_roi_cv5_v1.yaml
+  stats_only: experiments/cross_task_prior_transfer/configs/cross_task_lpt_stats_only_cv5_v1.yaml
+  segmentation: experiments/dfuc2022_seg_baseline/configs/dfuc2022_seg_deeplabv3p_cv5_v1.yaml
+source_config_policy: 'resolve and hash before training; verify exact filenames and variant semantics; missing file is a preflight stop, not permission to silently substitute'
+neutral:
+  source_architecture: full_lpt
+  prior_probability: 0.5
+  roi: full_rgb_image
+  stats: [0.5, 0.5, 1.0, 0.5]
+  alignment_target: constant_0_5
+  preserve_constant_after_augmentation: true
+  preserve_all_heads_and_loss_weights: true
+stacking:
+  source: experiments/reliability_aware_prior_fusion/oof_stack.py
+  output_only_features: 85
+  ra_lpt_features: 151
+  strong_rgb_features: 53
+  strong_rgb_prior_features: 103
+  C_grid: [0.03, 0.1, 0.3, 1.0, 3.0, 10.0]
+  class_weights: [null, balanced]
+  bias_steps: [0.5, 0.25, 0.1, 0.05]
+  bias_bounds: [-2.0, 2.0]
+  tune_bias: true
+  inner_selection_score_is_independent_validation: false
+  test_fold_never_used_for_feature_generation_training_or_selection: true
+segmentation_audit:
+  seed_count: 5
+  outer_folds: 5
+  inner_stop: 'KFold(5, shuffle=True, random_state=split_seed+outer_fold), fold0; restrict to outer-train'
+  prediction_threshold: 0.5
+  evaluation_grids_width_height: [[512, 384], [224, 224]]
+  replace_classification_prior: false
+statistics:
+  primary: mean_across_seed_pooled_oof_macro_f1_difference
+  contrasts: [full_minus_neutral, ra_minus_output_only, rgb_prior_minus_rgb]
+  multiplicity: holm_across_three_new_contrasts_if_p_values_reported
+  bootstrap: {replicates: 5000, unit: paired_seed_crossed_with_similarity_group, interval: percentile_95}
+  report_all_fold_seed_class_metrics: true
+interpretability:
+  models: [resnet50, full_lpt]
+  checkpoint_setting: similarity_grouped
+  random_placements_max: 30
+  qualitative_cases_per_class: 5
+  selection: pre_prediction_group_stratified_random
+  empty_and_immovable_masks: report_separately
+excluded_without_new_authorization:
+  - target_domain_manual_annotation
+  - learning_curve
+  - high_resolution_classification_search
+  - new_prior_generator_for_classification
+  - full_oof_candidate_search
+  - manuscript_editing_or_submission
+planned_fits: {classification: 900, segmentation: 25}

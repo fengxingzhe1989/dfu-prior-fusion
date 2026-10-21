@@ -1,0 +1,14 @@
+{
+  "boundary": "Exploratory internal training-size sensitivity; no clinical or patient-level validation.",
+  "completed_at": "2026-10-14T21:41:26.269668+00:00",
+  "figure_exports_sha256": "2c61a3a573715d67bf95dfe1d01a1c4becd3255144b5160997bab06fbeed6c2b",
+  "images_per_cell": 5955,
+  "manuscript_updated": false,
+  "new_fits": 400,
+  "reused_fits": 0,
+  "seal_sha256": "39eeadd4b5f2d70bd821f962d1b834989ea9f9ca1ebe5684e18e22732c77cba7",
+  "seed_model_size_cells": 40,
+  "status": "complete",
+  "summary_complete_sha256": "f287012760c02d43c09b5b1c86b3c48eca682548233fd7e27a006b79363b2d1d",
+  "visual_qa_complete": false
+}

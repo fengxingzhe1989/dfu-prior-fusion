@@ -1,0 +1,116 @@
+{
+  "artifact_type": "public_provenance_projection_not_execution_seal",
+  "assignment_hashes": {
+    "data_processed/training_size_sensitivity_v3/fraction_100_seed_20260925.csv": "efe04558c53c1235c86174e3efd15b87d360195462891b16736201247178c89a",
+    "data_processed/training_size_sensitivity_v3/fraction_100_seed_20260926.csv": "1a34eceb74ac0ab1801c32bd98cd60d93c961a845ebea82829629e0c89ea07cf",
+    "data_processed/training_size_sensitivity_v3/fraction_100_seed_20260927.csv": "a181d2476069504a03cc7f3d7eff3e0eb628c97c299c69f8413c3f7553faccef",
+    "data_processed/training_size_sensitivity_v3/fraction_100_seed_20260928.csv": "7d3673a990b6625bf19be079f1e9e7e5f404d4d6fc43b3f19dcfee9991e530fb",
+    "data_processed/training_size_sensitivity_v3/fraction_100_seed_20260929.csv": "aa5f9df75c4e0a961b88665fbc5afc2d15e6a23e76d2b2a85976952430cf9828",
+    "data_processed/training_size_sensitivity_v3/fraction_25_seed_20260925.csv": "1688262e7a9b7edb3433c571677fbe83503b8f9e098ce55357faf213af876998",
+    "data_processed/training_size_sensitivity_v3/fraction_25_seed_20260926.csv": "bdcb7fd889eaa0367b98d5c3a38786fe2cdf4e22109edc27613144bd347683ce",
+    "data_processed/training_size_sensitivity_v3/fraction_25_seed_20260927.csv": "f6e54cec84ccbf652cf28a84ced384a22ee7da48c868dc1e647ab1d0d2ec8fee",
+    "data_processed/training_size_sensitivity_v3/fraction_25_seed_20260928.csv": "7c4f8a13a1932a2556e2e3cf70e3dff1ea4176407d8c3427f3d9af1d5122053d",
+    "data_processed/training_size_sensitivity_v3/fraction_25_seed_20260929.csv": "7aaad0d6f555b8295e7a994e2a889f471d50ae3656a00ec4cab670df929330ee",
+    "data_processed/training_size_sensitivity_v3/fraction_50_seed_20260925.csv": "f62d74395484ce46187f2615522d11117d414c497547c6ed81577f151404fcaa",
+    "data_processed/training_size_sensitivity_v3/fraction_50_seed_20260926.csv": "e7b2866ee4baa2191f3809a6e585026fd0d0e71deda7a9f92c704f0a1ced1759",
+    "data_processed/training_size_sensitivity_v3/fraction_50_seed_20260927.csv": "762851e359f656bfc186affb647e3aa4eb6e4889e3662cca608e62bdebe8f242",
+    "data_processed/training_size_sensitivity_v3/fraction_50_seed_20260928.csv": "8d338d6fffe30fbc7aeca23be8b82559618a3aad6ab0689193ca44a44cde891f",
+    "data_processed/training_size_sensitivity_v3/fraction_50_seed_20260929.csv": "ec5df7db72640d81c869e9b1eb0ed4871a8392ded9a8a2db73693f731421abac",
+    "data_processed/training_size_sensitivity_v3/fraction_75_seed_20260925.csv": "d7ce7b42729374da278c5891742d8e4c9a4d6e8b1ace93a7e91421e3aef1cbc1",
+    "data_processed/training_size_sensitivity_v3/fraction_75_seed_20260926.csv": "a85c7b98fe4bff55630bd4544018b695caff9047152c8f66ebaade42e8b6ab1b",
+    "data_processed/training_size_sensitivity_v3/fraction_75_seed_20260927.csv": "b682aed0062571a4c0588095ded6b881b400878c4708950d304f8cfdb9a7fdc0",
+    "data_processed/training_size_sensitivity_v3/fraction_75_seed_20260928.csv": "64d8c6f223c024709f1d782f7c9291ed614343f19c950e568f36499ecec7bc3e",
+    "data_processed/training_size_sensitivity_v3/fraction_75_seed_20260929.csv": "a194b967ce0a2dac1a323f50a2da0e91619f1b9780e6d2f0fab3f4edf831ebea",
+    "data_processed/training_size_sensitivity_v3/subset_counts.csv": "6481eea3172c0d4f66193d18be1953c1b06f49eecc62b9e7324832e96862ab7d"
+  },
+  "environment_without_executable_path": {
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "albumentations": "2.0.8",
+      "cv2_imported_version": "4.13.0",
+      "numpy": "2.4.4",
+      "opencv-python-headless": "4.13.0.92",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.8.0",
+      "timm": "1.0.26",
+      "torch": "2.7.1",
+      "torch_imported_version": "2.7.1+cu126",
+      "torchvision": "0.22.1"
+    },
+    "platform": "Linux-6.8.0-64-generic-x86_64-with-glibc2.35",
+    "python": "3.13.12 (main, Mar  3 2026, 15:01:51) [Clang 21.1.4 ]"
+  },
+  "models": [
+    "lpt_full",
+    "lpt_neutral"
+  ],
+  "new_fits": 400,
+  "nominal_sizes": [
+    25,
+    50,
+    75,
+    100
+  ],
+  "original_seal_created_at": "2026-10-12T03:46:56.534095+00:00",
+  "original_seal_sha256": "39eeadd4b5f2d70bd821f962d1b834989ea9f9ca1ebe5684e18e22732c77cba7",
+  "original_summary_complete_sha256": "f287012760c02d43c09b5b1c86b3c48eca682548233fd7e27a006b79363b2d1d",
+  "pretrained_checkpoint_hashes_by_basename": {
+    "mobilenet_v3_small-047dcff4.pth": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f",
+    "resnet50-11ad3fa6.pth": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca"
+  },
+  "previous_attempts_excluded": true,
+  "publication_handling": [
+    "Original seal is archived unchanged and is not redistributed.",
+    "Executable path omitted; ImageNet checkpoint keys reduced to basenames.",
+    "Source and assignment digests retained as original repository-relative entries.",
+    "Some registered inputs, including macOS sidecars, are not in this release.",
+    "This projection cannot satisfy or replace the original runner seal.",
+    "Public checks verify copied code and aggregate arithmetic, not every archived source or model input."
+  ],
+  "rendering_packages": {
+    "Pillow": "11.3.0",
+    "matplotlib": "3.10.9"
+  },
+  "reused_fits": 0,
+  "seeds": [
+    20260925,
+    20260926,
+    20260927,
+    20260928,
+    20260929
+  ],
+  "source_hashes": {
+    "data_processed/associate_editor_revision_v1/nested_grouped_assignments.csv": "f0d4590e47ba0e58b2d24236dbace32ea6cb62f45628d5470c2914744d166dbf",
+    "data_processed/cross_task_lesion_prior_v1/dfuc2021_train_prior_meta.csv": "f1e00bb71049255029f23ddaa15cb50151c7d928f3bff6b1a4db7bd2a79352c4",
+    "data_processed/dfuc2021_cls_v1/similarity_grouped_splits/dfuc2021_cls_cv5_similarity_grouped_manifest.csv": "aec52b1c6a8fc847928676409f7efef012a99c96cd15f5dfc9de2195cb402dff",
+    "experiments/associate_editor_revision_v1/protocol.yaml": "9fce4f5895cfc1ac77a1dc644e4b5155c2ef7d659753a82e50d0ea5e0a9e543e",
+    "experiments/associate_editor_revision_v1/train_nested_classification.py": "e7527b1acb7d41c53fe372c945a77dba23e7f9f21b8036491814535f18bb84bc",
+    "experiments/cross_task_prior_transfer/configs/cross_task_lpt_resnet50_mobilenetv3_cv5_v1.yaml": "bc0e810e4781911af194f19e99fa348607d94c917ffe8d7c9553ce7d1768fa74",
+    "experiments/cross_task_prior_transfer/generate_dfuc2021_priors.py": "204566d07d95702e671f1f54a0a990febec25d6034fb1e7788990ab3c7f81bfb",
+    "experiments/cross_task_prior_transfer/run_lpt_cv.py": "682a0a06c0983862d09aacf9e8d457812e21556ba648518889b861637e14c657",
+    "experiments/cross_task_prior_transfer/train_lpt.py": "67365365531655c9ee984e5c8f135132ead033d717db0fc701dceba7d471c985",
+    "experiments/dfuc2021_cls_baseline/prepare_splits.py": "058c0485bb967709c5ed89a29f94af913555ba0c5f5aff07cbefcd3afeb6a836",
+    "experiments/dfuc2021_cls_baseline/run_cv.py": "e47126d30f6efe025aa3f745198df151d54d563e2b3b0e13222cb0524273a959",
+    "experiments/dfuc2021_cls_baseline/summarize_strong_results.py": "6f62e06df6a07111931f002190acec2aa33b2f8e101f96bac5e65a9ab7bb1689",
+    "experiments/dfuc2021_cls_baseline/train.py": "89436751d973c8465bc06ecdc9846ed04ed1a38fc163c0eed332f8bb4d4bf534",
+    "experiments/training_size_sensitivity_v3/._common.py": "1250d4ebfb3c8ffe5baa5822b64934192e058c2b48c82ab9a76375837ebad2e8",
+    "experiments/training_size_sensitivity_v3/._render_curves.py": "1250d4ebfb3c8ffe5baa5822b64934192e058c2b48c82ab9a76375837ebad2e8",
+    "experiments/training_size_sensitivity_v3/._run.py": "1250d4ebfb3c8ffe5baa5822b64934192e058c2b48c82ab9a76375837ebad2e8",
+    "experiments/training_size_sensitivity_v3/._summarize.py": "1250d4ebfb3c8ffe5baa5822b64934192e058c2b48c82ab9a76375837ebad2e8",
+    "experiments/training_size_sensitivity_v3/._test_design.py": "1250d4ebfb3c8ffe5baa5822b64934192e058c2b48c82ab9a76375837ebad2e8",
+    "experiments/training_size_sensitivity_v3/FIGURE_CONTRACT.md": "e9449ab19cc569f9821755b6b92214c5dcdbb2e9273a5fb48775e930a5c200c3",
+    "experiments/training_size_sensitivity_v3/PROTOCOL.md": "4c59a2a47a13749e791926ccdf7539a8844b08b05dd1c1f855167d49b31cd9b8",
+    "experiments/training_size_sensitivity_v3/common.py": "75530e5befe122566eb1844c18d192c51b0a714020702f5b82c53e7d4ab28008",
+    "experiments/training_size_sensitivity_v3/render_curves.py": "f73dcd83257eaf71e6a27f66468dbc5860c6650e772872dda869ce91d122ecf6",
+    "experiments/training_size_sensitivity_v3/run.py": "661f1ca119d92600d44a1439240e13218bf3e33f682b1fcac3664e8ae8c613d2",
+    "experiments/training_size_sensitivity_v3/summarize.py": "6942f4de3835e5aa9fc8d5326eb95e5fd3204bf7a28576d9efbc1e2cfac92d34",
+    "experiments/training_size_sensitivity_v3/test_design.py": "2e754953733a1e2d39e574faca6c5115cb4b76fb44a5ae3b02497de93ad7526b",
+    "outputs/associate_editor_revision_v1/environment.json": "fe97b2d2a58deda102eab98b0deb2397bb58de116323a7a8748ffc4bc6a85520",
+    "outputs/checkpoints/dfuc2022_seg_deeplabv3p_cv5_v1_best_overall.pt": "7ffbb2de0e6a9ef6c177af658587e1b94429b27a9e97b4f1a6dd2df3925d3337",
+    "outputs/training_size_sensitivity_v1/superseded_by_v3.json": "5d13db84a51f4ad35e782e9f113aa5432047ff3fc418fd10d3499e5a4122a0c8",
+    "outputs/training_size_sensitivity_v2/superseded_by_v3.json": "147e0676cb1865554b5be25511f99780b610d9d322335a6aa41f61f5eb101769",
+    "outputs/training_size_sensitivity_v3/cpu_preflight_complete.json": "2b91c1c9fed7b08673cbc74ad24e412a529d8750b316f29c9368003ec03829d1"
+  }
+}

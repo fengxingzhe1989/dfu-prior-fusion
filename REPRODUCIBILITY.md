@@ -1,0 +1,130 @@
+# Reproduction and verification
+
+## 1. Verify the release without training
+
+From the repository root:
+
+```bash
+uv sync --frozen --python 3.13
+uv run python scripts/check_release.py
+uv run python scripts/check_rgb_extension_release.py
+uv run python scripts/check_training_size_release.py
+uv run python -m unittest discover -s experiments/associate_editor_revision_v1 -p 'test_*.py' -v
+uv run python -m unittest experiments.interpretability_rgb_extension_v1.test_extension -v
+uv run python experiments/training_size_sensitivity_v3/test_design.py
+uv run python data_processing/prepare_manuscript_data.py --dry-run
+```
+
+The release check verifies copied source/output hashes, declared config and preprocessing dependencies, cohort metadata, seed/summary coverage and aggregate calculations. It is not GPU retraining or a guarantee of bitwise reproduction on another platform. The executed training environment used Python 3.13, PyTorch 2.7.1 with CUDA 12.6 and an RTX 4090. The lockfile describes the packaged dependency environment.
+
+## 2. Prepare licensed inputs
+
+Obtain DFUC2021 and DFUC2022 through their original access arrangements; see [DATA.md](DATA.md). Do not substitute another cohort, grouping, prior checkpoint or seed set under the same protocol name.
+
+The released `paper_assets/split_metadata/dfuc2021_cls_cv5_similarity_grouped_manifest.csv` is byte-identical to the frozen grouped manifest (SHA256 `aec52b1c6a8fc847928676409f7efef012a99c96cd15f5dfc9de2195cb402dff`). Copy it into `data_processed/dfuc2021_cls_v1/similarity_grouped_splits/` in a fresh reproduction workspace. The standard manifest is retained for the historical analysis. Preparation helpers can reconstruct audits/manifests, but newly generated assignments must be checked against the frozen artifacts before claiming exact reproduction.
+
+After making the licensed source images/masks available, generate the segmentation manifest and priors:
+
+```bash
+uv run python data_processing/run_step.py dfuc2022-seg-splits
+uv run python data_processing/run_step.py dfuc2021-lesion-priors -- --checkpoint outputs/checkpoints/dfuc2022_seg_deeplabv3p_cv5_v1_best_overall.pt
+uv run python experiments/associate_editor_revision_v1/prepare_nested_splits.py
+```
+
+The classification runner requires the exact prior-checkpoint hash in `protocol.yaml`. That checkpoint is not distributed here. Independently retraining a source segmenter need not reproduce it. The new segmentation audit does **not** replace this generator. The frozen nested-assignment SHA256 is `f0d4590e47ba0e58b2d24236dbace32ea6cb62f45628d5470c2914744d166dbf`; compare the generated file before training.
+
+## 3. Execute the frozen matrix
+
+Run sequentially in the prepared CUDA environment:
+
+```bash
+uv run python experiments/associate_editor_revision_v1/run_classification_matrix.py
+uv run python experiments/associate_editor_revision_v1/run_remaining_pipeline.py
+uv run python experiments/associate_editor_revision_v1/summarize.py
+```
+
+Classification contains 900 fits across all five seeds and outer folds. The remaining-pipeline runner waits for classification, checks/repairs non-finite predictions under the unchanged configuration, then fits four stacks (100 outer seed/fold/stack fits) and runs the 25-fit segmentation audit. **It does not automatically run the final summary or interpretation stage.** Outputs go to `outputs/associate_editor_revision_v1/`.
+
+Outer evaluation images are not used for checkpoint or stack selection. Inner held-out predictions, stopping subsets and final refits have distinct roles; see frozen `METHODS.md`, `protocol.yaml` and implementation. The protocol status field is a historical freeze-time value, not a live progress monitor, and remains unchanged.
+
+Do not select favorable seeds, drop valid completed jobs, tune on outer predictions or use pre-revision OOF probabilities. Partial-run CLI options are for operational recovery, not selective reporting. Require completion markers and hashes before summarizing. Do not routinely use `--force`; preserve failed logs and artifacts when diagnosing a failure.
+
+## 4. Initial two-model interpretation stage
+
+```bash
+uv run python experiments/associate_editor_revision_v1/run_interpretability.py --mode prepare
+uv run python experiments/associate_editor_revision_v1/run_interpretability.py --mode smoke
+uv run python experiments/associate_editor_revision_v1/run_interpretability.py --mode run
+uv run python experiments/associate_editor_revision_v1/resume_interpretability_finalization.py --verify-only
+```
+
+This initial stage evaluates ResNet50 and Full LPT using their frozen outer-refit checkpoints and predictions: 50 model/seed/fold jobs, 59,550 quantitative image-model-seed records, and 20 prediction-blind cases shown across all seeds. It is retained unchanged. The current five-model manuscript also uses the separate extension in Section 5 below. The included geometry/finalization tests use synthetic data. Medical-image case plates are not republished in this repository.
+
+If inference is complete but summary/export is incomplete, run the finalization helper without `--verify-only`; it validates provenance and resumes only missing stages. Do not reseal changed inputs or replace cases. Grad-CAM and occlusion measure generated-prior-relative model sensitivity, not anatomical or clinical validity.
+
+## 5. Later three-RGB-model exploratory extension
+
+The separately frozen [extension protocol](experiments/interpretability_rgb_extension_v1/PROTOCOL.md) adds EfficientNet-B0, ConvNeXt-Tiny and EfficientNetV2-S. It was specified after the initial two-model analysis was available and is **additional exploratory work**, not an original prespecified primary analysis. All five training seeds (20260925–20260929), all five outer folds, all 5,955 images and the same 20 prediction-blind cases and occlusion placements are retained. No models are retrained, seeds discarded or cases reselected.
+
+Run this only after Sections 3 and 4 are complete, with the archived checkpoints, predictions, licensed images and priors available in the same reproduction workspace:
+
+```bash
+uv run python experiments/interpretability_rgb_extension_v1/run.py --mode prepare
+uv run python experiments/interpretability_rgb_extension_v1/run.py --mode smoke
+uv run python experiments/interpretability_rgb_extension_v1/run.py --mode run
+```
+
+The default source is `outputs/associate_editor_revision_v1/`, which is read-only to the extension. New outputs are written separately to `outputs/interpretability_rgb_extension_v1/interpretability/`. The 75 added inference jobs contribute 89,325 image-model-seed records. Together with the initial 50 jobs, the combined analysis has **125 jobs and 148,875 records across five models**. These are inference/interpretability jobs, not 125 additional training fits. `finalize.py` audits both sets and creates the combined summaries and fixed-case displays.
+
+If inference has completed but a summary or figure stage remains missing, use:
+
+```bash
+uv run python experiments/interpretability_rgb_extension_v1/run.py --mode finalize
+```
+
+This verifies sealed provenance, skips valid completed stages and refuses to overwrite partial output directories. Preserve incomplete outputs and diagnose the actual error before recovery; do not delete/reseal registries to bypass a failed check. `extension_complete.json` confirms computation/export, not visual review or manuscript integration. The original two-model code and outputs remain unchanged.
+
+Combined non-image summaries and all 5,000 bootstrap replicates are in `paper_assets/interpretability_rgb_extension_v1/`. `scripts/check_rgb_extension_release.py` verifies the release hashes, all-model/all-seed coverage, case-list identity, seed means/SDs and bootstrap intervals without medical images or GPU execution. It does not re-audit undistributed checkpoints or reproduce inference. The archived summary marker links the 75 added and 50 original job audits to their registry hashes; the source code files are byte-identical to the sealed execution versions.
+
+Reported intervals are descriptive pointwise crossed seed × similarity-group bootstrap intervals, not multiplicity-adjusted confirmatory tests. Predicted-class targets can differ between models; common true-label-target contrasts are separate. CAM target layers differ across architectures; overlap with an uncertain generated prior is not anatomical accuracy, and full-system contrasts do not isolate a causal prior effect. See `REPORTING_BOUNDARIES.md` in the combined summary directory.
+
+### Display-only manuscript update
+
+The sealed renderers preserve their original `magma`, opacity 0.40 exports. The final manuscript uses the same fixed cases and archived, per-image-normalized CAM arrays with a uniform `Greens` colour map and opacity 0.35. This later presentation change alters neither CAM values nor quantitative results. Medical-image plates and manuscript-specific layout sources are not redistributed here; the submission package records the final display hashes. Reproducing the sealed analysis and reproducing the final presentation are distinct tasks.
+
+## 6. Later four-budget training-size sensitivity
+
+The [v3 protocol](experiments/training_size_sensitivity_v3/PROTOCOL.md) and seven frozen source/protocol files are byte-identical to the executed versions. Full LPT and neutral-prior Full LPT share nested group-preserving budgets at nominal 25%, 50%, 75% and 100%, across five trajectories and five fixed outer folds. Budget selection precedes the within-budget fit/stopping split; both fit and stopping labels count towards the budget. Each arm selects its own training duration and is freshly refitted from ImageNet initialization. The original external prior remains fixed. The executed trainer overrides the base YAML batch setting to 16.
+
+All four budgets, **including 100%**, were trained anew: 400 CNN fits (4 budgets × 5 trajectories × 5 folds × 2 arms × selection/refit), 200 outer prediction cells and 40 pooled-OOF cells. These are additional to the 900 primary classification fits. Earlier v1/v2 attempts and the primary 100% endpoint are not pooled into this analysis. Variation across the five trajectories includes training-subset, internal-partition and optimization realizations. The outer evaluation cohort remains 5,955 images; the 227 ischaemia-only evaluation images do not become more numerous at larger training budgets.
+
+The [public aggregates](paper_assets/training_size_sensitivity_v3/summary/) retain every budget and trajectory, actual fit/stop/refit/test counts, class-level confusion counts and all 5,000 paired crossed trajectory × similarity-group bootstrap replicates. Their intervals are exploratory, pointwise percentile intervals; no new confirmatory p values or Holm-adjusted comparisons are introduced. The original three-comparison primary family is unchanged.
+
+`scripts/check_training_size_release.py` checks copied-file hashes, all-cell coverage, counts, seed-level metrics, mean/sample-SD summaries and intervals reconstructed from the **saved** bootstrap draws. This is useful without licensed images or a GPU. It is not a new bootstrap from raw OOF predictions, a checkpoint audit or retraining. The design tests use synthetic data.
+
+### Executing versus auditing the archived procedure
+
+The actual runner stages, **only in a complete archived execution workspace**, are:
+
+```bash
+uv run python experiments/training_size_sensitivity_v3/run.py --mode prepare
+uv run python experiments/training_size_sensitivity_v3/run.py --mode smoke
+uv run python experiments/training_size_sensitivity_v3/run.py --mode run
+uv run python experiments/training_size_sensitivity_v3/run.py --mode status
+```
+
+`run` includes finalization; `--mode finalize` can resume the final stages when the complete, verified fit artifacts are present. **These are not self-contained commands for a fresh public clone.** They require licensed inputs, the exact original nested assignments and prior generator/maps, the original `associate_editor_revision_v1/environment.json`, cached ImageNet weights, and the v1/v2 `superseded_by_v3.json` provenance records. The runner checks the sealed Python/CUDA/GPU/package environment (Python 3.13.12, PyTorch 2.7.1+cu126, RTX 4090) and records machine-specific cache paths. Finalization also verifies all 400 fit completion records and refit model checkpoints. Aggregates alone cannot satisfy these gates.
+
+The original seal additionally registered five non-executable macOS `._*.py` sidecars through a file glob. These are not Python dependencies and are not published, but the unchanged seal verifier checks their existence and hashes. Restoring an original run therefore requires its complete archived inputs, including these records; do not silently delete registry entries or fabricate replacements to bypass verification. A new, portable execution setup would need a separately identified, reviewed provenance record, not a claim to be the unchanged archived run.
+
+`provenance_summary.json` is a **public projection, not the execution seal**: it retains source/assignment hashes, environment versions and checkpoint basenames/hashes while omitting private executable/cache prefixes. It records the original seal hash. The original seal remains unchanged in the research archive. Some registered source/data/checkpoint files are not distributed, and public verification does not claim to verify them. `analysis_complete.json` preserves its historical computation-time flags (`manuscript_updated: false`, `visual_qa_complete: false`); these are not current submission-status indicators.
+
+The frozen `render_curves.py` produces the original figure with all five trajectory lines. The final Supplementary Figure S3 is a later display-only revision: mean ± sample SD, individual thin lines omitted, and all y axes 0.40–1.00. The same complete trajectory values remain public. This repository does not claim that the frozen renderer directly regenerates the final manuscript layout.
+
+## 7. Outputs and history
+
+Classification, stacking, segmentation and initial two-model aggregates are in `paper_assets/associate_editor_revision_v1/`; combined five-model interpretation aggregates are in `paper_assets/interpretability_rgb_extension_v1/`. Do not substitute the former two-model interpretation summary for the current five-model summary. Archived markers refer to some non-distributed checkpoints, per-image predictions and case arrays. Each `input_registry_relative.csv` is an explicitly path-redacted interpretation registry copy: its original hash is recorded and its new file hash intentionally differs. Result values are unchanged.
+
+The later four-budget aggregates are separately archived in `paper_assets/training_size_sensitivity_v3/`. Their original summary marker refers to 1,400 private fit/prediction/provenance inputs; its presence does not imply these inputs are distributed. The release-specific registry records only the files actually copied or explicitly derived for publication.
+
+The original generator-resolution audit and architecture-only benchmark are retained under `paper_assets/source_tables/frontiers_revision_v5/`, with scripts under `paper_assets/analysis_scripts/`. They are not the new independent segmentation audit or end-to-end pipeline benchmarks. The historical batch/split factorial remains in its own experiment directory; do not pool its one-seed, checkpoint-selected estimates with current results.

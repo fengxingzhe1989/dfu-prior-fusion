@@ -1,0 +1,57 @@
+{
+  "added_models": [
+    "efficientnetb0",
+    "convnext_tiny",
+    "efficientnetv2s"
+  ],
+  "assets": {
+    "REPORTING_BOUNDARIES.md": "d08dd6210adebf8caaac2297e38960bba2bbfd9c8130df591f89226b104ba356",
+    "bootstrap_design.json": "5a0175ce37a38c72e714d2e6a846c3d200d41bda517ce73eccac8b983bdfdc7b",
+    "bootstrap_intervals.csv": "e51fb44c15f4cb058c4dd744542b9db861a4be5148991b5a8aa34d04211b9ebd",
+    "bootstrap_replicates.csv": "f3c39fe800f7e7efd6a363e101747ac9c84b040441240c257993ec122c6e5d4c",
+    "coverage_audit.csv": "34981b25e3abd3affcbee42170d6b739f5c979c0dcdfbf3ed12bc489ab208772",
+    "input_registry.csv": "dccf5c1a293117a223982e49807b061b1ac6699da6ec95a323649deecb73a1c2",
+    "model_summary.csv": "2a76a737ddc55e52b72e217254a3eb4f87f94fa3267c529bd90e0dbcb4cb2f2b",
+    "paired_seed_metrics.csv": "93441000cc0019a1053b3adfd6eeff80880c0e86f38210aa9cb527c10729ed37",
+    "seed_metrics.csv": "f8e821af33f2da186991fc73f4b1ac90b28df07290ac2a9366f0a8ef024c30aa"
+  },
+  "audited_inputs": {
+    "extension": {
+      "audited_jobs": 75,
+      "qualitative_cases_sha256": "7bf670229858c037d84f10777bed6975e1f45ec5d13115c6023c5db24e99d547",
+      "source_registry_sha256": "f0af29dc1a1a247fa828daafd1e53ca00595ddcb1f15bf1803691a07be11eeff"
+    },
+    "original": {
+      "audited_jobs": 50,
+      "qualitative_cases_sha256": "7bf670229858c037d84f10777bed6975e1f45ec5d13115c6023c5db24e99d547",
+      "source_registry_sha256": "c3133406d5de79a88176ccb202babbaf0482b4080c3a33eddfcaf441f218f823"
+    }
+  },
+  "bootstrap": {
+    "draw_order": "group_indices_then_seed_indices_per_replicate",
+    "draw_sequence_sha256": "e1e5b26ee048bc228ae92c7ae1f8683b2bf7ecff3b5968be7335e7e86b5edce0",
+    "n_group_draws": 5670,
+    "n_seed_draws": 5,
+    "replicates": 5000,
+    "seed": 20261001
+  },
+  "extension_registry_sha256": "f0af29dc1a1a247fa828daafd1e53ca00595ddcb1f15bf1803691a07be11eeff",
+  "images_per_model_seed": 5955,
+  "models": [
+    "resnet50",
+    "efficientnetb0",
+    "convnext_tiny",
+    "efficientnetv2s",
+    "lpt_full"
+  ],
+  "n_image_seed_model_rows": 148875,
+  "p_values_reported": false,
+  "seeds": [
+    20260925,
+    20260926,
+    20260927,
+    20260928,
+    20260929
+  ],
+  "status": "complete"
+}

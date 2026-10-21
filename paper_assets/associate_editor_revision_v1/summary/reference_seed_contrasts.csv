@@ -1,0 +1,13 @@
+contrast,row_type,seed,model_a,model_b,macro_f1_a,macro_f1_b,difference,difference_sd_across_seeds
+full_minus_resnet50,seed,20260925,full_lpt,resnet50,0.8949783593,0.8663442056,0.02863415375,NA
+full_minus_resnet50,seed,20260926,full_lpt,resnet50,0.893627912,0.8414323208,0.05219559117,NA
+full_minus_resnet50,seed,20260927,full_lpt,resnet50,0.8830222411,0.8666565849,0.01636565621,NA
+full_minus_resnet50,seed,20260928,full_lpt,resnet50,0.8986306399,0.8535870989,0.04504354102,NA
+full_minus_resnet50,seed,20260929,full_lpt,resnet50,0.8902327284,0.8514734219,0.03875930644,NA
+full_minus_resnet50,across_seed_summary,NA,full_lpt,resnet50,0.8920983761,0.8558987264,0.03619964972,0.01406467585
+ra_minus_resnet50,seed,20260925,ra_lpt_stack,resnet50,0.9151803687,0.8663442056,0.04883616309,NA
+ra_minus_resnet50,seed,20260926,ra_lpt_stack,resnet50,0.9164489312,0.8414323208,0.07501661042,NA
+ra_minus_resnet50,seed,20260927,ra_lpt_stack,resnet50,0.9170935825,0.8666565849,0.05043699755,NA
+ra_minus_resnet50,seed,20260928,ra_lpt_stack,resnet50,0.9168807554,0.8535870989,0.06329365656,NA
+ra_minus_resnet50,seed,20260929,ra_lpt_stack,resnet50,0.9246607691,0.8514734219,0.07318734721,NA
+ra_minus_resnet50,across_seed_summary,NA,ra_lpt_stack,resnet50,0.9180528814,0.8558987264,0.06215415496,0.01227938558
