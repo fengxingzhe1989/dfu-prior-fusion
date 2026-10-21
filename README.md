@@ -1,6 +1,6 @@
 # DFU cross-dataset ulcer-region priors
 
-Code and non-image aggregate results for *Incremental value of a cross-dataset ulcer-region prior for infection and ischaemia classification in diabetic foot ulcer image patches* (manuscript 1944475).
+Code and non-image aggregate results for *Incremental value of a cross-dataset ulcer-region prior for infection and ischaemia classification in diabetic foot ulcer image patches*.
 
 ## Study overview figure
 
