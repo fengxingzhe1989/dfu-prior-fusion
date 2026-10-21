@@ -4,6 +4,8 @@ Code and non-image aggregate results for *Incremental value of a cross-dataset u
 
 ## Study overview figure
 
+![Figure 1. Study design, incremental comparisons and evaluation hierarchy.](paper_assets/figures/Figure1.png)
+
 [Download Figure 1 (final manuscript TIFF)](paper_assets/figures/Figure1.tiff): study design, incremental comparisons and evaluation hierarchy. This manuscript figure is included separately from the non-image aggregate results; it is not a release of the underlying image datasets.
 
 ## Current analysis

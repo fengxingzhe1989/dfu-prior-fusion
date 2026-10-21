@@ -66,6 +66,7 @@ runs/
 
 # Explicitly included final manuscript figure; raw image datasets remain excluded.
 !paper_assets/figures/Figure1.tiff
+!paper_assets/figures/Figure1.png
 
 # Local office/app lock files
 ~$*
